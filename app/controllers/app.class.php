@@ -55,7 +55,6 @@ class App
 
     private function render($data)
     {
-        $view = new Template("views/app.html", $data);
-        echo $view;
+        echo new Template("views/app.html", $data);
     }
 }

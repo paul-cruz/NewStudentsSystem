@@ -20,6 +20,18 @@ class User
         ];
     }
 
+    public function show($arg)
+    {
+        switch ($arg) {
+            case "form":
+                return [
+                    "header" => new Template("views/components/headers/outter_header.html", []),
+                    "child" => new Template("views/form.html", [])
+                ];
+                break;
+        }
+    }
+
     public function read($id)
     {
         # code...
