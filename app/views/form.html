@@ -13,63 +13,55 @@
                         <div class="row text-left justify-content-center">
                             <form action="" method="post" class="w-90 form3">
                                 <fieldset class="border">
-                                    <legend class="w-auto">Procedencia</legend>
+                                    <legend class="w-auto">Identidad</legend>
                                     <div class="form-group p-2">
-                                        <label class="form-label" for="school-proc">Escuela de procedencia:
-                                        </label>
-                                        <select name="school-proc" class="col-10 col-sm-8">
-                                            <?php?>
-                                            <!--Load schools-->
-                                            <option>Cecyt 1 "Gonzalo Vázquez Vela</option>
-                                        </select>
+                                        <label class="form-label" for="report-card">No. De boleta: </label>
+                                        <input name="report-card" type="text" class="col-md-8 col-10 col-sm-8" />
                                     </div>
 
                                     <div class="form-group p-2">
-                                        <label class="form-label" for="state">Entidad federativa de procedencia:
-                                        </label>
-                                        <select name="state" class="col-md-6 col-8">
-                                            <?php?>
-                                            <!--Load states-->
-                                            <option>Aguascalientes</option>
-                                        </select>
+                                        <label class="form-label" for="names">Nombre(s): </label>
+                                        <input name="names" type="text" class="col-md-8 col-10 col-sm-8" />
                                     </div>
 
                                     <div class="form-group p-2">
-                                        <label class="form-label" for="school">Nombre de la escuela: </label>
-                                        <input name="school" type="text" class="col-md-8 col-10 col-sm-8" />
+                                        <label class="form-label" for="last-name">Apellido paterno: </label>
+                                        <input name="last-name" type="text" class="col-md-8 col-10 col-sm-8" />
                                     </div>
 
                                     <div class="form-group p-2">
-                                        <label class="form-label" for="average">Promedio: </label>
-                                        <input name="average" type="text" class="col-3 col-sm-2" />
+                                        <label class="form-label" for="sur-name">Apellido materno: </label>
+                                        <input name="sur-name" type="text" class="col-md-8 col-10 col-sm-8" />
                                     </div>
 
                                     <div class="form-group p-2">
-                                        <label class="form-label" for="option">Número de opción de ESCOM:
+                                        <label class="form-label" for="birth-date">Fecha de nacimiento: </label>
+                                        <input name="birth-date" type="date" class="col-md-4" />
+                                    </div>
+
+                                    <div class="form-group p-2">
+                                        <label class="form-label" for="option">Sexo:
                                         </label>
                                         <div class="p-2">
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions"
                                                     id="inlineRadio1" value="1" checked>
-                                                <label class="form-check-label" for="inlineRadio1">Primera</label>
+                                                <label class="form-check-label" for="inlineRadio1">Femenino</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions"
                                                     id="inlineRadio2" value="2">
-                                                <label class="form-check-label" for="inlineRadio2">Segunda</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio3" value="3">
-                                                <label class="form-check-label" for="inlineRadio3">Tercera</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio4" value="4">
-                                                <label class="form-check-label" for="inlineRadio4">Cuarta</label>
+                                                <label class="form-check-label" for="inlineRadio2">Masculino</label>
                                             </div>
                                         </div>
                                     </div>
+
+                                    
+                                    <div class="form-group p-2">
+                                        <label class="form-label" for="curp">CURP: </label>
+                                        <input name="curp" type="text" class="col-md-8 col-10 col-sm-8" />
+                                    </div>
+
                                 </fieldset>
                             </form>
                         </div>
@@ -85,63 +77,39 @@
                         <div class="row text-left justify-content-center">
                             <form action="" method="post" class="w-90 form3">
                                 <fieldset class="border">
-                                    <legend class="w-auto">Procedencia</legend>
+                                    <legend class="w-auto">Contacto</legend>
+
                                     <div class="form-group p-2">
-                                        <label class="form-label" for="school-proc">Escuela de procedencia:
-                                        </label>
-                                        <select name="school-proc" class="col-10 col-sm-8">
-                                            <?php?>
-                                            <!--Load schools-->
-                                            <option>Cecyt 1 "Gonzalo Vázquez Vela</option>
-                                        </select>
+                                        <label class="form-label" for="street">Calle: </label>
+                                        <input name="street" type="text" class="col-md-8 col-10 col-sm-8" />
                                     </div>
 
                                     <div class="form-group p-2">
-                                        <label class="form-label" for="state">Entidad federativa de procedencia:
-                                        </label>
-                                        <select name="state" class="col-md-6 col-8">
-                                            <?php?>
-                                            <!--Load states-->
-                                            <option>Aguascalientes</option>
-                                        </select>
+                                        <label class="form-label" for="num-street">Numero: </label>
+                                        <input name="num-street" type="text" class="col-md-8 col-10 col-sm-8" />
+                                    </div>
+                                    
+                                    <div class="form-group p-2">
+                                        <label class="form-label" for="city">Colonia: </label>
+                                        <input name="city" type="text" class="col-md-8 col-10 col-sm-8" />
                                     </div>
 
                                     <div class="form-group p-2">
-                                        <label class="form-label" for="school">Nombre de la escuela: </label>
-                                        <input name="school" type="text" class="col-md-8 col-10 col-sm-8" />
+                                        <label class="form-label" for="postal-code">Codigo postal: </label>
+                                        <input name="postal-code" type="text" class="col-md-8 col-10 col-sm-8" />
                                     </div>
 
                                     <div class="form-group p-2">
-                                        <label class="form-label" for="average">Promedio: </label>
-                                        <input name="average" type="text" class="col-3 col-sm-2" />
+                                        <label class="form-label" for="phone-number">Telefono o celular: </label>
+                                        <input name="phone-number" type="text" class="col-md-8 col-10 col-sm-8" />
                                     </div>
 
                                     <div class="form-group p-2">
-                                        <label class="form-label" for="option">Número de opción de ESCOM:
-                                        </label>
-                                        <div class="p-2">
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio1" value="1" checked>
-                                                <label class="form-check-label" for="inlineRadio1">Primera</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio2" value="2">
-                                                <label class="form-check-label" for="inlineRadio2">Segunda</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio3" value="3">
-                                                <label class="form-check-label" for="inlineRadio3">Tercera</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio4" value="4">
-                                                <label class="form-check-label" for="inlineRadio4">Cuarta</label>
-                                            </div>
-                                        </div>
+                                        <label class="form-label" for="email">Correo electronico: </label>
+                                        <input name="email" type="email" class="col-md-8 col-10 col-sm-8" />
                                     </div>
+
+                            
                                 </fieldset>
                             </form>
                         </div>
