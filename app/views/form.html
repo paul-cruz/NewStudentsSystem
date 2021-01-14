@@ -126,24 +126,28 @@
                             <form action="" method="post" class="w-90 form3">
                                 <fieldset class="border">
                                     <legend class="w-auto">Procedencia</legend>
-                                    <div class="form-group p-2">
-                                        <label class="form-label" for="school-proc">Escuela de procedencia:
+                                    <div class="row p-2">
+                                        <label class="col-sm-4 col-form-label" for="school-proc">Escuela de procedencia:
                                         </label>
-                                        <select name="school-proc" class="col-10 col-sm-8">
-                                            <?php?>
-                                            <!--Load schools-->
-                                            <option>Cecyt 1 "Gonzalo Vázquez Vela</option>
-                                        </select>
+                                        <div class="col-sm-8">
+                                            <select name="school-proc" class="form-control-select">
+                                                <?php?>
+                                                <!--Load schools-->
+                                                <option>Cecyt 1 "Gonzalo Vázquez Vela</option>
+                                            </select>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group p-2">
-                                        <label class="form-label" for="state">Entidad federativa de procedencia:
+                                    <div class="row p-2">
+                                        <label class="col-sm-4 form-label" for="state">Entidad federativa de procedencia:
                                         </label>
-                                        <select name="state" class="col-md-6 col-8">
-                                            <?php?>
-                                            <!--Load states-->
-                                            <option>Aguascalientes</option>
-                                        </select>
+                                        <div class="col-sm-8">
+                                            <select name="state" class="form-control-select">
+                                                <?php?>
+                                                <!--Load states-->
+                                                <option>Aguascalientes</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="form-group p-2">
@@ -197,9 +201,9 @@
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">Identidad</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Contacto</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Procedencia</a></li>
+                                <li class="page-item"><a class="page-link" href="#" id="identidad">Identidad</a></li>
+                                <li class="page-item"><a class="page-link" href="#" id="contacto">Contacto</a></li>
+                                <li class="page-item"><a class="page-link" href="#" id="procedencia">Procedencia</a></li>
                                 <li id="page-next" class="page-item">
                                     <a class="page-link" href="#" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
@@ -229,6 +233,24 @@
             let display = $("#form" + page).css("display")
             $("#form" + page).css("display", "none")
             if (--page < 1) { page = 3 }
+            $("#form" + page).css("display", display)
+        });
+        $("#identidad").click(() => {
+            let display = $("#form"+page).css("display")
+            $("#form" + page).css("display", "none");
+            page=1;
+            $("#form" + page).css("display", display)
+        });
+        $("#contacto").click(() => {
+            let display = $("#form"+page).css("display")
+            $("#form" + page).css("display", "none");
+            page=2;
+            $("#form" + page).css("display", display)
+        });
+        $("#procedencia").click(() => {
+            let display = $("#form"+page).css("display")
+            $("#form" + page).css("display", "none");
+            page=3;
             $("#form" + page).css("display", display)
         });
     });
