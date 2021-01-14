@@ -15,8 +15,8 @@ class User
         //$products = $this->db->query("SELECT * FROM users");
 
         return [
-            "header" => new Template("views/components/headers/outter_header.html", []),
-            "child" => new Template("views/form.html", [])
+            "header" => new Template("views/components/headers/inner_header.html", []),
+            "child" => new Template("views/home.html", [])
         ];
     }
 
