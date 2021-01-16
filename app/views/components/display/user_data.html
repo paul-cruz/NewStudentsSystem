@@ -1,0 +1,12 @@
+<div class="row container-fluid">
+    <div class="col-lg-3 col-md-3">
+        <img class="user-thumbnail rounded float-start " src="/views/images/<?=$image?>.png">
+    </div>
+    <?php
+    for($i=0, $j=0; $i<round(count($data)/5, 0, PHP_ROUND_HALF_UP); $i++,$j+=5){
+        echo "<div class=\"col-lg-3 col-md-3 justify-content-center align-items-center\">";
+            foreach (array_slice($data,$j,5,false) as $clave => $valor) echo "<h3><strong>$clave: </strong>$valor</h3>";
+        echo "</div>";
+}
+?>
+</div>
