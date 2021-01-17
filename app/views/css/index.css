@@ -56,6 +56,10 @@ legend {
   margin-bottom: 0;
 }
 
+.hide{
+  display: none;
+}
+
 @media (max-width: 991.98px) {
   .app-title {
     font-size: x-large;
