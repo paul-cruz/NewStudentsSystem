@@ -62,7 +62,7 @@
                             </div>
 
                         </fieldset>
-                        <fieldset id="form2" class="border p-2" style="display: none;">
+                        <fieldset id="form2" class="border p-2 hide">
                             <legend class="w-auto">Contacto</legend>
 
                             <div class="mx-2 mb-2 row">
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset id="form3" class="border p-2" style="display: none;">
+                        <fieldset id="form3" class="border p-2 hide">
                             <legend class="w-auto">Procedencia</legend>
                             <div class="mb-2 mx-2 row">
                                 <label class="col-form-label col-sm-3" for="state">Entidad federativa de procedencia:</label>
@@ -119,10 +119,10 @@
                             <div class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-4" for="cecyt-graduate">¿Eres egresado de un CECyT?</label>
                                 <div class="col-md-7">
-                                    <input type="checkbox" class="form-check-input" value="1" />
+                                    <input id="chkFromCECyT" type="checkbox" class="form-check-input" value="1" />
                                 </div>
                             </div>
-                            <div class="mx-2 mb-2 row">
+                            <div id="ddlCECyTs" class="mx-2 mb-2 row hide">
                                 <label class="col-form-label col-sm-3" for="school-proc">Escuela de procedencia:</label>
                                 <div class="col-md-9">
                                     <select name="school-proc" class="form-control">
@@ -134,7 +134,7 @@
                             </div>
                             
 
-                            <div class="mx-2 mb-2 row">
+                            <div id="school_name" class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-3" for="school">Nombre de la escuela: </label>
                                 <div class="col-md-9">
                                     <input name="school" type="text" class="form-control" />
@@ -212,31 +212,26 @@
         var page = 1
         $(".page-link").click((e) => {
             e.preventDefault()
-            let display = $("#form" + page).css("display")
-            $("#form" + page).css("display", "none")
+            $("#form" + page).addClass("hide")
             switch (e.currentTarget.id) {
                 case "contacto":
                     page = 2
-                    setHeaderText(page)
                     break;
                 case "procedencia":
                     page = 3
-                    setHeaderText(page)
                     break;
                 case "next":
                     if (++page > 3) { page = 1 }
-                    setHeaderText(page)
                     break;
                 case "previous":
                     if (--page < 1) { page = 3 }
-                    setHeaderText(page)
                     break;
                 default:
                     page = 1
-                    setHeaderText(page)
                     break;
             }
-            $("#form" + page).css("display", display)
+            setHeaderText(page)
+            $("#form" + page).removeClass("hide")
         });
 
         function setHeaderText(pag) {
@@ -245,6 +240,18 @@
             $("#form-title").text(titles[pag - 1])
             $("#form-subtitle").text(subtitles[pag - 1])
         }
+
+        $("#chkFromCECyT").change((e)=>{
+            e.preventDefault();
+            console.log(e)
+            if(e.target.checked){
+                $("#ddlCECyTs").removeClass("hide")
+                $("#school_name").addClass("hide")
+            }else{
+                $("#ddlCECyTs").addClass("hide")
+                $("#school_name").removeClass("hide")
+            }
+        })
 
         $("#studentForm").validate({
             rules: {
