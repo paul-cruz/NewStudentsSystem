@@ -62,79 +62,92 @@
                             </div>
 
                         </fieldset>
-                        <fieldset id="form2" class="border" style="display: none;">
+                        <fieldset id="form2" class="border p-2" style="display: none;">
                             <legend class="w-auto">Contacto</legend>
 
-                            <div class="form-group p-2">
-                                <label class="form-label" for="street">Calle: </label>
-                                <input name="street" type="text" class="col-md-8 col-10 col-sm-8" />
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-2" for="street">Calle: </label>
+                                <div class="col-md-4">
+                                    <input name="street" type="text" class="form-control" />
+                                </div>
+                                <label class="col-form-label col-sm-2 " for="num-street">Número: </label>
+                                <div class="col-md-4">
+                                    <input name="num-street" type="text" class="form-control" />
+                                </div>
                             </div>
 
-                            <div class="form-group p-2">
-                                <label class="form-label" for="num-street">Numero: </label>
-                                <input name="num-street" type="text" class="col-md-8 col-10 col-sm-8" />
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-2" for="city">Colonia: </label>
+                                <div class="col-md-10 col-12">
+                                    <input name="city" type="text" class="form-control" />
+                                </div>
                             </div>
 
-                            <div class="form-group p-2">
-                                <label class="form-label" for="city">Colonia: </label>
-                                <input name="city" type="text" class="col-md-8 col-10 col-sm-8" />
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-2" for="postal-code">Codigo postal: </label>
+                                <div class="col-md-4">    
+                                    <input name="postal-code" type="text" class="form-control" />
+                                </div>
+
+                                
+                                <label class="form-label col-sm-2" for="phone-number">Telefono o celular: </label>
+                                <div class="col-md-4">
+                                    <input name="phone-number" type="text" class="form-control" />
+                                </div>
                             </div>
 
-                            <div class="form-group p-2">
-                                <label class="form-label" for="postal-code">Codigo postal: </label>
-                                <input name="postal-code" type="text" class="col-md-8 col-10 col-sm-8" />
-                            </div>
-
-                            <div class="form-group p-2">
-                                <label class="form-label" for="phone-number">Telefono o celular: </label>
-                                <input name="phone-number" type="text" class="col-md-8 col-10 col-sm-8" />
-                            </div>
-
-                            <div class="form-group p-2">
-                                <label class="form-label" for="email">Correo electronico: </label>
-                                <input name="email" type="email" class="col-md-8 col-10 col-sm-8" />
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-2" for="email">Correo electronico: </label>
+                                <div class="col-md-10">
+                                    <input name="email" type="email" class="form-control" />
+                                </div>
                             </div>
                         </fieldset>
-                        <fieldset id="form3" class="border" style="display: none;">
+                        <fieldset id="form3" class="border p-2" style="display: none;">
                             <legend class="w-auto">Procedencia</legend>
-                            <div class="row p-2">
-                                <label class="col-sm-4 col-form-label" for="school-proc">Escuela de procedencia:
-                                </label>
-                                <div class="col-sm-8">
-                                    <select name="school-proc" class="form-control-select">
-                                        <?php?>
-                                        <!--Load schools-->
-                                        <option>Cecyt 1 "Gonzalo Vázquez Vela</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row p-2">
-                                <label class="col-sm-4 form-label" for="state">Entidad federativa de procedencia:
-                                </label>
-                                <div class="col-sm-8">
-                                    <select name="state" class="form-control-select">
+                            <div class="mb-2 mx-2 row">
+                                <label class="col-form-label col-sm-3" for="state">Entidad federativa de procedencia:</label>
+                                <div class="col-md-9">
+                                    <select name="state" class="form-control">
                                         <?php?>
                                         <!--Load states-->
-                                        <option>Aguascalientes</option>
+                                        <option>--Seleccionar--</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="form-group p-2">
-                                <label class="form-label" for="school">Nombre de la escuela: </label>
-                                <input name="school" type="text" class="col-md-8 col-10 col-sm-8" />
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-4" for="cecyt-graduate">¿Eres egresado de un CECyT?</label>
+                                <div class="col-md-7">
+                                    <input type="checkbox" class="form-check-input" value="1" />
+                                </div>
+                            </div>
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-3" for="school-proc">Escuela de procedencia:</label>
+                                <div class="col-md-9">
+                                    <select name="school-proc" class="form-control">
+                                        <?php?>
+                                        <!--Load schools-->
+                                        <option>--Seleccionar--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-3" for="school">Nombre de la escuela: </label>
+                                <div class="col-md-9">
+                                    <input name="school" type="text" class="form-control" />
+                                </div>
                             </div>
 
-                            <div class="form-group p-2">
-                                <label class="form-label" for="average">Promedio: </label>
-                                <input name="average" type="text" class="col-3 col-sm-2" />
-                            </div>
-
-                            <div class="form-group p-2">
-                                <label class="form-label" for="option">Número de opción de ESCOM:
-                                </label>
-                                <div class="p-2">
+                            <div class="mb-2 mx-2 row">
+                                <label class="col-form-label col-sm-3" for="average">Promedio: </label>
+                                <div class="col-md-2"> 
+                                    <input name="average" type="text" class="form-control" />
+                                </div>
+                                <label class="col-form-label col-sm-3" for="option">Número de opción de ESCOM:</label>
+                                <div class="col-md-4">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions"
                                             id="inlineRadio1" value="1" checked>
