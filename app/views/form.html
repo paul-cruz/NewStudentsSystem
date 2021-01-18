@@ -369,6 +369,60 @@
                     pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
                     minlength: 6,
                     maxlength: 50
+                },
+                postal_code: {
+                    required: true,
+                    pattern: /[0-9]{5}/,
+                    minlength: 5,
+                    maxlength: 5
+                },
+                name: {
+                    required: true,
+                    pattern: /[A-Za-z]/,
+                    minlength: 3,
+                    maxlength: 30
+                },
+                ApPat: {
+                    required: true,
+                    pattern: /[A-Za-z]/,
+                    minlength: 4,
+                    maxlength: 15
+                },
+                ApMat: {
+                    required: true,
+                    pattern: /[A-Za-z]/,
+                    minlength: 4,
+                    maxlength: 15
+                },
+                street: {
+                    required: true,
+                    pattern: /[A-Za-z0-9]/,
+                    minlength: 4,
+                    maxlength: 20
+                },
+                num_street: {
+                    required: true,
+                    pattern: /[A-Za-z0-9]/,
+                    minlength: 1,
+                    maxlength: 3
+                },
+                colonia: {
+                    required: true,
+                    pattern: /[A-Za-z]/,
+                    minlength: 6,
+                    maxlength: 20
+                },
+                school: {
+                    required: true,
+                    pattern: /[A-Za-z0-9]/,
+                    minlength: 6,
+                    maxlength: 30
+                },
+                score: {
+                    required: true,
+                    pattern: /[0-9]{1,2}(\.[0-9]{1,2}){0,1}/,
+                    minlength: 1,
+                    maxlength: 5
                 }
             },
             messages: {
@@ -382,7 +436,7 @@
                     required: "Ingresa tu CURP por favor",
                     pattern: "CURP invalido",
                     maxlength: "La CURP debe ser de 18 caracteres",
-                    minlength: "La CURP debe ser de 10 caracteres",
+                    minlength: "La CURP debe ser de 18 caracteres",
                 },
                 phone_number: {
                     required: "Ingresa un número valido por favor",
@@ -396,6 +450,60 @@
                     maxlength: "El número debe ser de máximo 50 digitos",
                     minlength: "El número debe ser de minimo 6 digitos",
                 },
+                postal_code: {
+                    required: "Ingresa tu código postal por favor",
+                    pattern: "Código postal invalido",
+                    minlength: "El código postal debe ser de 5 digitos",
+                    maxlength: "El código postal debe ser de 5 digitos",
+                },
+                name: {
+                    required: "Ingresa tu nombre por favor",
+                    pattern: "Nombre invalido",
+                    minlength: "El nombre debe ser máximo de 3 caracteres",
+                    maxlength: "El nombre debe ser mímino de 30 caracteres",
+                },
+                ApPat: {
+                    required: "Ingresa tu apellido paterno por favor",
+                    pattern: "Apellido paterno invalido",
+                    minlength: "El apellido paterno debe ser mínimo de 4 caracteres",
+                    maxlength: "El apellido paterno debe ser máximo de 15 caracteres",
+                },
+                ApMat: {
+                    required: "Ingresa tu apellido materno por favor",
+                    pattern: "Apellido materno invalido",
+                    minlength: "El apellido materno debe ser mínimo de 4 caracteres",
+                    maxlength: "El apellido materno debe ser máximo de 15 caracteres",
+                },
+                street: {
+                    required: "Ingresa el nombre de la calle por favor",
+                    pattern: "Calle invalida",
+                    minlength: "El nombre de la calle debe ser mínimo de 4 caracteres",
+                    maxlength: "El nombre de la calle debe ser máximo de 20 caracteres",
+                },
+                num_street: {
+                    required: "Ingresa el número de la dirección por favor",
+                    pattern: "Número invalido",
+                    minlength: "El número de la dirección debe ser mínimo de 1 dígito",
+                    maxlength: "El número de la dirección debe ser máximo de 3 dígitos",
+                },
+                colonia: {
+                    required: "Ingresa el nombre de la colonia por favor",
+                    pattern: "Colonia invalida",
+                    minlength: "El nombre de la colonia debe ser mínimo de 6 caracteres",
+                    maxlength: "El nombre de la colonia debe ser máximo de 20 caracteres",
+                },
+                school: {
+                    required: "Ingresa el nombre de la escuela por favor",
+                    pattern: "Escuela invalida",
+                    minlength: "El nombre de la escuela debe ser mínimo de 6 caracteres",
+                    maxlength: "El nombre de la escuela debe ser máximo de 30 caracteres",
+                },
+                score: {
+                    required: "Ingresa tu promedio por favor",
+                    pattern: "Promedio invalido",
+                    minlength: "El promedio debe ser mínimo de 1 digito",
+                    maxlength: "El promedio debe ser máximo de 5 dígitos",
+                }
             },
             highlight: function (e) {
                 $(e).addClass("is-invalid");
