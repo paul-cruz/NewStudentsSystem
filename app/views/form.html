@@ -78,7 +78,7 @@
                             <div class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-2" for="colonia">Colonia: </label>
                                 <div class="col-md-10 col-12">
-                                    <input name="colonia" type="text" class="form-control" maxlength="20"/>
+                                    <input name="colonia" type="text" class="form-control" maxlength="60"/>
                                 </div>
                             </div>
 
@@ -410,7 +410,7 @@
                     required: true,
                     pattern: /[A-Za-z]/,
                     minlength: 6,
-                    maxlength: 20
+                    maxlength: 60
                 },
                 school: {
                     required: true,
@@ -484,13 +484,13 @@
                     required: "Ingresa el número de la dirección por favor",
                     pattern: "Número invalido",
                     minlength: "El número de la dirección debe ser mínimo de 1 dígito",
-                    maxlength: "El número de la dirección debe ser máximo de 3 dígitos",
+                    maxlength: "El número de la dirección debe ser máximo de 4 dígitos",
                 },
                 colonia: {
                     required: "Ingresa el nombre de la colonia por favor",
                     pattern: "Colonia invalida",
                     minlength: "El nombre de la colonia debe ser mínimo de 6 caracteres",
-                    maxlength: "El nombre de la colonia debe ser máximo de 20 caracteres",
+                    maxlength: "El nombre de la colonia debe ser máximo de 60 caracteres",
                 },
                 school: {
                     required: "Ingresa el nombre de la escuela por favor",
