@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="row">
+        <div class="col-md-4">
+            <input id="btnAdd" type="button" class="btn btn-outline-success m-3" value="Agregar" data-bs-toggle="modal"
+                data-bs-target="#insertModal<?= $title ?>" />
+        </div>
+        <div class="col-md-4">
+            <input id="btnUpdate" type="button" class="btn btn-outline-warning m-3" value="Actualizar"
+                data-bs-toggle="modal" data-bs-target="#updateModal<?= $title ?>" />
+        </div>
+        <div class="col-md-4">
+            <input id="btnDelete" type="button" class="btn btn-outline-danger m-3" value="Eliminar"
+                data-bs-toggle="modal" data-bs-target="#deleteModal<?= $title ?>" />
+        </div>
+    </div>
+    <div class="row">
+        <?php if ($data): ?>
+        <div class="table-responsive">
+            <table class="table table-light table-hover table-bordered border-primary">
+                <tr class="table-primary">
+                    <?php foreach (array_keys($data[0]) as $header) echo "<th scope='col'>$header</th>"?>
+                </tr>
+                <?php foreach ($data as $row): ?>
+                <tr>
+                    <?php foreach ($row as $data) echo "<td scope='col'>$data</td>"?>
+                </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+        <?php endif;?>
+    </div>
+</div>
+
+<!-- Insert Modal -->
+<div class="modal fade" id="insertModal<?= $title ?>" tabindex="-1" aria-labelledby="insertModal<?= $title ?>" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="insertModal<?= $title ?>">Agregar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"></button>
+            </div>
+            <div class="modal-body">
+                <?=$insertModal?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button id="btnInsert<?= $title ?>" type="submit" class="btn btn-success">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Modal -->
+<div class="modal fade" id="updateModal<?= $title ?>" tabindex="-1" aria-labelledby="updateModal<?= $title ?>" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateModal">Actualizar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"></button>
+            </div>
+            <div class="modal-body">
+                <?=$updateModal?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button id="btnUpdate<?= $title ?>" type="button" class="btn btn-warning">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Insert Modal -->
+<div class="modal fade" id="deleteModal<?= $title ?>" tabindex="-1" aria-labelledby="deleteModal<?= $title ?>" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModal">Eliminar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"></button>
+            </div>
+            <div class="modal-body">
+                <?=$deleteModal?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button  id="btnDelete<?= $title ?>"type="button" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnInsert"+'<?= $title ?>').click((e) => {
+            console.log($("#insert" + '<?= $title ?>' + "Form").serializeJSON())
+        })
+
+        $("#btnUpdate"+'<?= $title ?>').click((e) => {
+            console.log($("#update" + '<?= $title ?>' + "Form").serializeJSON())
+        })
+
+        $("#btnDelete"+'<?= $title ?>').click((e) => {
+            console.log($("#delete" + '<?= $title ?>' + "Form").serializeJSON())
+        })
+    });
+</script>
