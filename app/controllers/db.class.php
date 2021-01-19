@@ -7,7 +7,7 @@ class DB
 
     public function __construct()
     {
-        $this->db = new mysqli("127.0.0.1:33060", "root", "secret", "students_system");
+        $this->db = new mysqli("172.18.0.2", "test", "test", "students_system");
     }
 
     public function query($sql)

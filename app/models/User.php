@@ -85,6 +85,8 @@ class User
 
     public function create($data)
     {
+        echo "hola";
+        var_dump($data);
         //$this->$db->$query("INSERT INTO Rol VALUES ('perro');");
 
     }
@@ -104,5 +106,5 @@ if(isset($_REQUEST["data"])){
     require_once("../controllers/db.class.php");
     $db = new DB();
     $user = new User($db);
-    echo $user;
+    $user->create($_REQUEST["data"]);
 }
