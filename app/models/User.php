@@ -2,7 +2,7 @@
 
 class User
 {
-
+    
     private $db;
     private $User;
     private $time = "10:00 AM";
@@ -83,9 +83,10 @@ class User
         # code...
     }
 
-    public function create()
+    public function create($data)
     {
-        # code...
+        //$this->$db->$query("INSERT INTO Rol VALUES ('perro');");
+
     }
 
     public function update($id)
@@ -97,4 +98,11 @@ class User
     {
         # code...
     }
+}
+
+if(isset($_REQUEST["data"])){
+    require_once("../controllers/db.class.php");
+    $db = new DB();
+    $user = new User($db);
+    echo $user;
 }

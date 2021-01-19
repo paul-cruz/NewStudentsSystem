@@ -112,6 +112,7 @@
                                         <?php?>
                                         <!--Load states-->
                                         <option selected>--Seleccionar--</option>
+                                        <option value="CDMX">Ciudad de México</option>
                                     </select>
                                 </div>
                             </div>
@@ -130,6 +131,7 @@
                                         <?php?>
                                         <!--Load schools-->
                                         <option selected>--Seleccionar--</option>
+                                        <option value="CECyT1">Cecyt 1</option>
                                     </select>
                                 </div>
                             </div>
@@ -262,7 +264,7 @@
                         <label class="col-form-label  col-sm-3 col-6"><strong>Entidad Federativa:</strong></label>
                         <label class="col-form-label  col-sm-3 col-6" name="state">"Entidad Federativa"</label>
                         <label class="col-form-label  col-sm-3 col-6"><strong>Escuela de procedencia:</strong></label>
-                        <label class="col-form-label  col-sm-3 col-6" name="high_school">"Escuela de procedencia"
+                        <label class="col-form-label  col-sm-3 col-6" name="school_proc">"Escuela de procedencia"
                         </label>
                     </div>
                     <div class="mx-2 mb-2 row">
@@ -338,10 +340,22 @@
         $("#studentForm").submit((e) => {
             if ($("#studentForm").valid()) {
                 $("#main-form").addClass("hide")
+                var content = [];
                 $.each($("#studentForm").serializeJSON(), function (key, value) {
-                    console.log(key + ":" + value)
+                    content.push({key: value})
                     $("label[name='" + key + "']").text(value)
                 });
+
+                $.ajax({
+                        url: "../models/User.php",
+                        data: {data: content},
+                        success: function(data){
+                            alert(data)
+                        },
+                        error: function(data){
+                            alert("error")
+                        }
+                    })
                 $("#verify-form").removeClass("hide")
             }
             e.preventDefault()
