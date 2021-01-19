@@ -4,9 +4,6 @@ class User
 {
 
     private $db;
-    private $User;
-    private $time = "10:00 AM";
-    private $group = "1CM1";
 
     public function setUser($user)
     {
@@ -25,7 +22,6 @@ class User
 
     public function index()
     {
-        //$user = $this->db->query("SELECT * FROM users");
         session_start();
 
         if (!isset($_SESSION['rol'])) {
@@ -35,7 +31,26 @@ class User
                 header('location: /');
             }
         }
-        $image = $this->user["sexo"] == "Masculino" ? "logo_hombre" : "logo_mujer";
+        $user = (array) $this->db->queryOne("SELECT boleta AS 'Numero de Boleta', Alumno.nombre AS 'Nombre', apPat AS 'Apellido Paterno', apMat AS 'Apellido Materno', telefono AS 'Telefono', correoE AS 'Correo Electronico', genero AS 'Genero', horario AS 'Horario', CatalogoDeEscuelas.nombre AS 'Escuela', promedio AS 'Promedio', opcionESCOM AS'Opcion ESCOM', calle AS 'Calle', colonia AS 'Colonia', numero AS 'Numero', codigoP AS 'CP', EntidadFederativa.nombre AS 'Entidad Federativa', fechNac AS 'Fecha de nacimiento', nombreEscuela AS 'Nombre Escuela', verificado AS 'Verificado' FROM Alumno INNER JOIN EntidadFederativa ON Alumno.idEntFed = EntidadFederativa.idEntFed LEFT JOIN CatalogoDeEscuelas ON Alumno.idEscuela = CatalogoDeEscuelas.idEscuela WHERE boleta = '" . $_SESSION['idUsuario'] . "'");
+        if ($user == false) {
+            header('location: /User/form');
+        }
+
+        $image = $user["Genero"] == "M" ? "logo_hombre" : "logo_mujer";
+        $user["Genero"] = $user["Genero"] == "M" ? "Masculino" : "Femenino";
+        $time = $user["Horario"];
+        unset($user["Horario"]);
+        $_SESSION['verified'] = $user["Verificado"];
+        unset($user["Verificado"]);
+        if ($user["Escuela"]) {
+            unset($user["Nombre Escuela"]);
+        } else {
+            $user["Escuela"] = $user["Nombre Escuela"];
+            unset($user["Nombre Escuela"]);
+        }
+        $group = "1CM1";
+
+
         return [
             "header" => new Template("views/components/headers/inner_header.html", []),
             "child" => new Template("views/home.html", [
@@ -44,22 +59,22 @@ class User
                         "col_size" => "12",
                         "title" => "Datos Personales",
                         "child" => new Template("views/components/display/user_data.html", [
-                            "image" => $this->image,
-                            "data" => $this->User
+                            "image" => $image,
+                            "data" => $user
                         ])
                     ]),
                     new Template("views/components/cards/home_card.html", [
                         "col_size" => "6",
                         "title" => "Horario de Examen",
                         "child" => new Template("views/components/display/big_data.html", [
-                            "data" => $this->time
+                            "data" => $time
                         ])
                     ]),
                     new Template("views/components/cards/home_card.html", [
                         "col_size" => "6",
                         "title" => "Grupo Asignado",
                         "child" => new Template("views/components/display/big_data.html", [
-                            "data" => $this->group
+                            "data" => $group
                         ])
                     ]),
                     new Template("views/components/cards/home_card.html", [
@@ -107,10 +122,6 @@ class User
     public function create($data)
     {
         var_dump($data);
-
-        $query = "INSERT INTO Usuario VALUES ('" . $data["boleta"] . "', '" . $data["boleta"] . "', 2);";
-
-        $this->db->executeQuery($query);
 
         $query = "INSERT INTO Alumno
             (boleta, nombre, apPat, apMat, telefono, correoE, genero, idEscuela, promedio, opcionESCOM, calle, colonia, numero, codigoP, idEntFed, fechNac, nombreEscuela, verificado)

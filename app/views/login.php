@@ -26,6 +26,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     if ($row == true) {
         $rol = $row["rol"];
         $_SESSION['rol'] = $rol;
+        $_SESSION['idUsuario'] = $username;
 
         switch ($_SESSION['rol']) {
             case 1:
