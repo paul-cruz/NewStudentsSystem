@@ -109,10 +109,7 @@
                                     procedencia:</label>
                                 <div class="col-md-9">
                                     <select name="state" class="form-control">
-                                        <?php?>
-                                        <!--Load states-->
                                         <option selected>--Seleccionar--</option>
-                                        <option value="CDMX">Ciudad de México</option>
                                     </select>
                                 </div>
                             </div>
@@ -128,10 +125,7 @@
                                 <label class="col-form-label col-sm-3" for="school_proc">Escuela de procedencia:</label>
                                 <div class="col-md-9">
                                     <select name="school_proc" class="form-control">
-                                        <?php?>
-                                        <!--Load schools-->
                                         <option selected>--Seleccionar--</option>
-                                        <option value="CECyT1">Cecyt 1</option>
                                     </select>
                                 </div>
                             </div>
@@ -340,12 +334,13 @@
         $("#studentForm").submit((e) => {
             if ($("#studentForm").valid()) {
                 $("#main-form").addClass("hide")
-                var content = [];
+                var content = {};
                 $.each($("#studentForm").serializeJSON(), function (key, value) {
-                    content.push({key: value})
+                    content[key] = value;
                     $("label[name='" + key + "']").text(value)
                 });
 
+                console.log(content);
                 $.ajax({
                         url: "../models/User.php",
                         data: {data: content},

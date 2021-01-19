@@ -85,8 +85,35 @@ class User
 
     public function create($data)
     {
-        var_dump($data);
-        $this->db->executeQuery("INSERT INTO Rol VALUES (null, 'perro');");
+        var_dump($data);    
+        
+        $query = "INSERT INTO Usuario VALUES ('".$data["boleta"]."', '".$data["boleta"]."', 2);";
+        
+        $this->db->executeQuery($query);
+
+        $query = "INSERT INTO Alumno
+            (boleta, nombre, apPat, apMat, telefono, correoE, genero, idEscuela, promedio, opcionESCOM, calle, colonia, numero, codigoP, idEntFed, fechNac, nombreEscuela, verificado)
+             VALUES (
+                '".$data["boleta"]."',
+                '".$data["name"]."',
+                '".$data["ApPat"]."',
+                '".$data["ApMat"]."',
+                '".$data["phone_number"]."',
+                '".$data["email"]."',
+                '".$data["sexo"]."', 
+                1, 
+                ".$data["score"].",
+                ".$data["ESCOMopt"].",
+                '".$data["street"]."',
+                '".$data["colonia"]."',
+                '".$data["num_street"]."',
+                '".$data["postal_code"]."',
+                1,
+                '".$data["birth"]."',
+                '".$data["school"]."',
+                1);";
+        echo $query;
+        $this->db->executeQuery($query);
 
     }
 
