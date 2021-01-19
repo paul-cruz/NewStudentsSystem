@@ -373,7 +373,6 @@
             if ($("#studentForm").valid()) {
                 $("#main-form").addClass("hide")
                 var content = {};
-                var iterator = 2;
                 $.each($("#studentForm").serializeJSON(), function (key, value) {
                     content[key] = value;
                     if(key=="state"){
@@ -383,7 +382,6 @@
                     } else{
                         $("label[name='" + key + "']").text(value);
                     }
-                    iterator+=1;
                 });
 
                 $.ajax({
@@ -393,7 +391,7 @@
                             console.log(data)
                         },
                         error: function(data){
-                            console.log("error")
+                            alert("error")
                         }
                     })
                 $("#verify-form").removeClass("hide")
