@@ -12,8 +12,16 @@ class Admin
 
     public function index()
     {
-        //$user = $this->db->query("SELECT * FROM users");
-        $image = $this->user["sexo"] == "Masculino" ? "logo_hombre" : "logo_mujer";
+        session_start();
+
+        if(!isset($_SESSION['rol'])){
+            header('location: /');
+        }else{
+            if($_SESSION['rol'] != 1){
+                header('location: /');
+            }
+        }
+
         return [
             "header" => new Template("views/components/headers/inner_header.html", []),
             "child" => new Template("views/home.html", [
