@@ -111,7 +111,7 @@
                                     <select name="state" class="form-control">
                                         <?php?>
                                         <!--Load states-->
-                                        <option disabled>--Seleccionar--</option>
+                                        <option selected>--Seleccionar--</option>
                                     </select>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                                     <select name="school_proc" class="form-control">
                                         <?php?>
                                         <!--Load schools-->
-                                        <option disabled>--Seleccionar--</option>
+                                        <option selected>--Seleccionar--</option>
                                     </select>
                                 </div>
                             </div>
@@ -315,6 +315,9 @@
             $("#form-title").text(titles[pag - 1])
             $("#form-subtitle").text(subtitles[pag - 1])
         }
+        $.validator.addMethod("valueNotEquals", function(value, element, arg){
+            return arg !== value;
+        }, "Value must not equal arg.");
 
         $("#chkFromCECyT").change((e) => {
             e.preventDefault();
@@ -343,9 +346,23 @@
             }
             e.preventDefault()
         })
-
+        var d = new Date();
+        var y = (d.getFullYear()-17).toString();
+        var m = (d.getMonth()+1).toString();
+        var day = d.getDate().toString();
+        var strDate = y + "-" + (m[1]?m:"0"+m) + "-" + (day[1]?day:"0"+day);
         $("#studentForm").validate({
             rules: {
+                birth:{
+                    required: true,
+                    max: strDate
+                },
+                school_proc: {
+                    valueNotEquals:"--Seleccionar--"
+                },
+                state: {
+                    valueNotEquals:"--Seleccionar--"
+                },
                 boleta: {
                     required: true,
                     pattern: /(P)+([P,E])+([0–9]{8})/,
@@ -426,6 +443,16 @@
                 }
             },
             messages: {
+                birth:{
+                    required:"Elige una fecha valida",
+                    max: "Elige una fecha anterior"
+                },
+                school_proc: {
+                    valueNotEquals:"Elige una opción valida"
+                },
+                state: {
+                    valueNotEquals:"Elige una opción valida"
+                },
                 boleta: {
                     required: "Ingresa tu boleta por favor",
                     pattern: "Número de boleta invalido",
