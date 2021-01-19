@@ -24,8 +24,8 @@ class DB
     }*/
 
     public function executeQuery($sql) {
-        if(mysqli_query($this->db, $sql)){
-            var_dump("Registrado!");
+        if($resultado = mysqli_query($this->db, $sql)){
+            return $resultado;
         } else {
             var_dump("error!");
             echo "Error: " . $sql . "" . mysqli_error($this->db);
