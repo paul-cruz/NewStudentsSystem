@@ -7,10 +7,10 @@ class DB
 
     public function __construct()
     {
-        $this->db = new mysqli("172.18.0.2", "test", "test", "students_system");
+        $this->db = new mysqli("mysql-server", "root", "secret", "students_system");
     }
 
-    public function query($sql)
+    /*public function query($sql)
     {
         $result = $this->db->query($sql);
 
@@ -21,6 +21,15 @@ class DB
         }
 
         return $arr;
+    }*/
+
+    public function executeQuery($sql) {
+        if(mysqli_query($this->db, $sql)){
+            var_dump("Registrado!");
+        } else {
+            var_dump("error!");
+            echo "Error: " . $sql . "" . mysqli_error($this->db);
+        }
     }
 
     public function queryOne($sql)

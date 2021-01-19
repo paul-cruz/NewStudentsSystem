@@ -85,9 +85,8 @@ class User
 
     public function create($data)
     {
-        echo "hola";
         var_dump($data);
-        //$this->$db->$query("INSERT INTO Rol VALUES ('perro');");
+        $this->db->executeQuery("INSERT INTO Rol VALUES (null, 'perro');");
 
     }
 
