@@ -330,17 +330,62 @@
             $("#main-form").removeClass("hide")
             $("#verify-form").addClass("hide")
         })
+        var states = [], schools = [];
+        $(document).ready(function() {
+            $.ajax({
+                url: "../models/State.php",
+                type: "GET",
+                data: {data: "get"},
+                success: function(response){
+                    response = response.split(",").filter((el)=>el!="");
+                    $.each(response, function(key, value){
+                        states.push(value);
+                        var option = new Option(value, key+1);
+                        $(option).html(value);
+                        $("select[name=state]").append(option);
+                    });
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+
+            $.ajax({
+                url: "../models/School.php",
+                type: "GET",
+                data: {data: "get"},
+                success: function(response){
+                    response = response.split(",").filter((el)=>el!="");
+                    $.each(response, function(key, value){
+                        schools.push(value);
+                        var option = new Option(value, key+1);
+                        $(option).html(value);
+                        $("select[name=school_proc]").append(option);
+                    });
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+        });
 
         $("#studentForm").submit((e) => {
             if ($("#studentForm").valid()) {
                 $("#main-form").addClass("hide")
                 var content = {};
+                var iterator = 2;
                 $.each($("#studentForm").serializeJSON(), function (key, value) {
                     content[key] = value;
-                    $("label[name='" + key + "']").text(value)
+                    if(key=="state"){
+                        $("label[name=state]").text(states[key]);
+                    } else if(key == "school_proc"){
+                        $("label[name=school_proc]").text(schools[key]);
+                    } else{
+                        $("label[name='" + key + "']").text(value);
+                    }
+                    iterator+=1;
                 });
 
-                console.log(content);
                 $.ajax({
                         url: "../models/User.php",
                         data: {data: content},

@@ -101,20 +101,18 @@ class User
                 '".$data["phone_number"]."',
                 '".$data["email"]."',
                 '".$data["sexo"]."', 
-                1, 
+                ".$data["school_proc"].", 
                 ".$data["score"].",
                 ".$data["ESCOMopt"].",
                 '".$data["street"]."',
                 '".$data["colonia"]."',
                 '".$data["num_street"]."',
                 '".$data["postal_code"]."',
-                1,
+                ".$data["state"].",
                 '".$data["birth"]."',
                 '".$data["school"]."',
                 1);";
-        echo $query;
         $this->db->executeQuery($query);
-
     }
 
     public function update($id)
