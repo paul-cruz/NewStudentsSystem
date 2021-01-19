@@ -20,25 +20,26 @@ class App
             $this->args[] = $uriParts[$i];
         }
 
-        /*$this->connectDB();*/
+        $this->connectDB();
         $this->loadModel($uriParts[0]);
     }
 
-    /*private function connectDB() {
-    $this->db = new DB();
-  }*/
+    private function connectDB()
+    {
+        $this->db = new DB();
+    }
 
     private function loadModel($modelName)
     {
-        if ($modelName != '') {
-            require_once("models/" . $modelName . ".php");
-            $modelName = ucfirst($modelName);
-
-            $this->model = new $modelName($this->db);
-            $this->callMethod($this->model);
-        } else {
-            $this->render(["child" => new Template("views/login.html", [])]);
+        if ($modelName == '') {
+            $this->render(["child" => new Template("views/login.php", [])]);
+            return;
         }
+        require_once("models/" . $modelName . ".php");
+        $modelName = ucfirst($modelName);
+
+        $this->model = new $modelName($this->db);
+        $this->callMethod($this->model);
     }
 
     private function callMethod($model)
