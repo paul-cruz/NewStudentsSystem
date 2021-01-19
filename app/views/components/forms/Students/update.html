@@ -1,5 +1,51 @@
 <form id="updateStudentsForm" action="" method="post" class="w-90 form3 needs-validation">
     <fieldset class="border p-2">
         <legend class="w-auto">Estudiantes</legend>
+        <div class="mx-2 mb-2 row">
+            <label for="txtBoleta" class="col-sm-4 col-form-label">Boleta:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="txtBoleta" name="boleta" maxlength="10">
+            </div>
+        </div>
+        <div class="mt-2 mx-2 mb-2 row justify-content-center">
+            <button id="btnBusStuUp" type="button" class="btn btn-outline-primary btn-sm col-4">Buscar</button>
+        </div>
+        <div id="datosStuUp" class="hide">
+            <div class="mx-2 mb-2 row">
+                <label class="col-form-label col-sm-5 col-6"><strong>Boleta:</strong></label>
+                <label class="col-form-label col-sm-7 col-6" name="Boleta">"Boleta"</label>
+            </div>
+            <div class="mx-2 mb-2 row">
+                <label class="col-form-label col-sm-5 col-6"><strong>Contraseña:</strong></label>
+                <label class="col-form-label col-sm-7 col-6" name="clave">"Contraseña"</label>
+            </div>
+        </div>
     </fieldset>
 </form>
+
+<script type="text/javascript">
+    $("#btnBusStuUp").click(() =>{
+        if($("#updateStudentsForm").valid()){
+            $("#datosStuUp").removeClass("hide")
+        }
+    })
+
+    $("#updateStudentsForm").validate({
+        rules: {
+            boleta: {
+                required: true,
+                pattern: /[A-Za-z0-9]/,
+                minlength: 10,
+                maxlength: 10
+            }
+        },
+        messages: {
+            boleta: {
+                required: "Introduce el No. de Boleta",
+                pattern: "Introduce un No. de Boleta valido",
+                minlength: "El No. de Boleta debe ser de 10 caracteres",
+                maxlength: "El No. de Boleta debe ser de 10 caracteres"
+            }
+        }
+    })
+</script>

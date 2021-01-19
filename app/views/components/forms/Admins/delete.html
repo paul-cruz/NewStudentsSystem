@@ -1,5 +1,63 @@
 <form id="deleteAdminsForm" action="" method="post" class="w-90 form3 needs-validation">
     <fieldset class="border p-2">
         <legend class="w-auto">Administrador</legend>
+        <div class="mx-2 mb-2 row">
+            <label for="txtClaveTrabajo" class="col-sm-4 col-form-label">Clave de trabajo:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="txtClaveTrabajo" name="claveTrabajo" maxlength="10">
+            </div>
+        </div>
+        <div class="mt-2 mx-2 mb-2 row justify-content-center">
+            <button id="btnBusAdDel" type="button" class="btn btn-outline-primary btn-sm col-4">Buscar</button>
+        </div>
+        <div id="datosAdDel" class="hide">
+            <div class="mx-2 mb-2 row">
+                <label class="col-form-label col-sm-5 col-6"><strong>Clave de Trabajo:</strong></label>
+                <label class="col-form-label col-sm-7 col-6" name="claveTrabajo">"Clave de Trabajo"</label>
+            </div>
+            <div class="mx-2 mb-2 row">
+                <label class="col-form-label col-sm-5 col-6"><strong>Nombre(s):</strong></label>
+                <label class="col-form-label col-sm-7 col-6" name="nombre">"Nombre(s)"</label>
+            </div>
+            <div class="mx-2 mb-2 row">
+                <label class="col-form-label col-sm-5 col-6"><strong>Apellido Paterno:</strong></label>
+                <label class="col-form-label col-sm-7 col-6" name="ApPatA">"Apellido Paterno"</label>
+            </div>
+            <div class="mx-2 mb-2 row">
+                <label class="col-form-label col-sm-5 col-6"><strong>Apellido Materno:</strong></label>
+                <label class="col-form-label col-sm-7 col-6" name="ApMatA">"Apellido Materno"</label>
+            </div>
+            <div class="mx-2 mb-2 row">
+                <label class="col-form-label col-sm-5 col-6"><strong>Puesto:</strong></label>
+                <label class="col-form-label col-sm-7 col-6" name="Puesto">"Puesto"</label>
+            </div>
+        </div>
     </fieldset>
 </form>
+
+<script type="text/javascript">
+    $("#btnBusAdDel").click(() =>{
+        if($("#deleteAdminsForm").valid()){
+            $("#datosAdDel").removeClass("hide")
+        }
+    })
+
+    $("#deleteAdminsForm").validate({
+        rules: {
+            claveTrabajo: {
+                required: true,
+                pattern: /[A-Za-z0-9]/,
+                minlength: 10,
+                maxlength: 10
+            }
+        },
+        messages: {
+            claveTrabajo: {
+                required: "Introduce la Clave de Trabajo",
+                pattern: "Introduce una Clave de Trabajo valida",
+                minlength: "El ID del Horario debe ser de 10 caracteres",
+                maxlength: "El ID del Horario debe ser de 10 caracteres"
+            }
+        }
+    })
+</script>

@@ -1,5 +1,104 @@
 <form id="insertAdminsForm" action="" method="post" class="w-90 form3 needs-validation">
     <fieldset class="border p-2">
         <legend class="w-auto">Administrador</legend>
+        <div class="mx-2 mb-2 row">
+            <label for="txtClaveTrabajo" class="col-sm-4 col-form-label">Clave de trabajo:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="txtClaveTrabajo" name="claveTrabajo" maxlength="10">
+            </div>
+        </div>
+        <div class="mx-2 mb-2 row">
+            <label for="txtNombreA" class="col-sm-4 col-form-label">Nombre(s):</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="txtNombreA" name="nombre" maxlength="18">
+            </div>
+        </div>
+        <div class="mx-2 mb-2 row">
+            <label for="txtApPatA" class="col-sm-5 col-form-label">Apellido Paterno:</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="txtApPatA" name="ApPatA" maxlength="15">
+            </div>
+        </div>
+        <div class="mx-2 mb-2 row">
+            <label for="txtApMatA" class="col-sm-5 col-form-label">Apellido Naterno:</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="txtApMatA" name="ApMatA" maxlength="15">
+            </div>
+        </div>
+        <div class="mx-2 mb-2 row">
+            <label for="txtPuesto" class="col-sm-5 col-form-label">Puesto:</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="txtPuesto" name="puesto" maxlength="10">
+            </div>
+        </div>
     </fieldset>
 </form>
+
+<script type="text/javascript">
+       $("#insertAdminsForm").validate({
+        rules: {
+            claveTrabajo: {
+                required: true,
+                pattern: /[A-Za-z0-9]/,
+                minlength: 10,
+                maxlength: 10
+            },
+            nombre: {
+                required: true,
+                pattern: /[A-Za-z]/,
+                minlength: 3,
+                maxlength: 18
+            },
+            ApPatA: {
+                required: true,
+                pattern: /[A-Za-z]/,
+                minlength: 3,
+                maxlength: 15
+            },
+            ApMatA: {
+                required: true,
+                pattern: /[A-Za-z]/,
+                minlength: 3,
+                maxlength: 15
+            },
+            puesto: {
+                required: true,
+                pattern: /[A-Za-z]/,
+                minlength: 3,
+                maxlength: 10
+            }
+        },
+        messages: {
+            claveTrabajo: {
+                required: "Introduce la clave de trabajo por favor",
+                pattern: "Introduce una clave de trabajo valida",
+                minlength: "La clave de trabajo debe ser de 10 caracteres",
+                maxlength: "La clave de trabajo debe ser de 10 caracteres"
+            },
+            nombre: {
+                required: "Introduce el Nombre por favor",
+                pattern: "Introduce un Nombre valido",
+                minlength: "El nombre debe ser de mínimo 3 caracteres",
+                maxlength: "El nombre debe ser de máximo 18 caracteres"
+            },
+            ApPatA: {
+                required: "Introduce el apellido paterno por favor",
+                pattern: "Introduce un apellido paterno valido",
+                minlength: "El apellido paterno debe ser de mínimo 3 caracteres",
+                maxlength: "El apellido paterno debe ser de máximo 15 caracteres"
+            },
+            ApMatA: {
+                required: "Introduce el apellido materno por favor",
+                pattern: "Introduce un apellido materno valido",
+                minlength: "El apellido materno debe ser de mínimo 3 caracteres",
+                maxlength: "El apellido naterno debe ser de máximo 15 caracteres"
+            },
+            puesto: {
+                required: "Introduce el puesto por favor",
+                pattern: "Introduce un puesto valido",
+                minlength: "El puesto debe ser de mínimo 5 caracteres",
+                maxlength: "El puesto debe ser de máximo 10 caracteres"
+            }
+        }
+    })
+</script>
