@@ -2,17 +2,19 @@
 
 class User
 {
-    
+
     private $db;
     private $User;
     private $time = "10:00 AM";
     private $group = "1CM1";
 
-    public function setUser($user){
+    public function setUser($user)
+    {
         $this->User = $user;
     }
 
-    public function getUser(){
+    public function getUser()
+    {
         return $this->User;
     }
 
@@ -24,6 +26,15 @@ class User
     public function index()
     {
         //$user = $this->db->query("SELECT * FROM users");
+        session_start();
+
+        if (!isset($_SESSION['rol'])) {
+            header('location: /');
+        } else {
+            if ($_SESSION['rol'] != 2) {
+                header('location: /');
+            }
+        }
         $image = $this->user["sexo"] == "Masculino" ? "logo_hombre" : "logo_mujer";
         return [
             "header" => new Template("views/components/headers/inner_header.html", []),
@@ -62,6 +73,16 @@ class User
 
     public function show($arg)
     {
+        session_start();
+
+        if (!isset($_SESSION['rol'])) {
+            header('location: /');
+        } else {
+            if ($_SESSION['rol'] != 2) {
+                header('location: /');
+            }
+        }
+
         switch ($arg) {
             case "form":
                 return [
@@ -85,32 +106,32 @@ class User
 
     public function create($data)
     {
-        var_dump($data);    
-        
-        $query = "INSERT INTO Usuario VALUES ('".$data["boleta"]."', '".$data["boleta"]."', 2);";
-        
+        var_dump($data);
+
+        $query = "INSERT INTO Usuario VALUES ('" . $data["boleta"] . "', '" . $data["boleta"] . "', 2);";
+
         $this->db->executeQuery($query);
 
         $query = "INSERT INTO Alumno
             (boleta, nombre, apPat, apMat, telefono, correoE, genero, idEscuela, promedio, opcionESCOM, calle, colonia, numero, codigoP, idEntFed, fechNac, nombreEscuela, verificado)
              VALUES (
-                '".$data["boleta"]."',
-                '".$data["name"]."',
-                '".$data["ApPat"]."',
-                '".$data["ApMat"]."',
-                '".$data["phone_number"]."',
-                '".$data["email"]."',
-                '".$data["sexo"]."', 
-                ".$data["school_proc"].", 
-                ".$data["score"].",
-                ".$data["ESCOMopt"].",
-                '".$data["street"]."',
-                '".$data["colonia"]."',
-                '".$data["num_street"]."',
-                '".$data["postal_code"]."',
-                ".$data["state"].",
-                '".$data["birth"]."',
-                '".$data["school"]."',
+                '" . $data["boleta"] . "',
+                '" . $data["name"] . "',
+                '" . $data["ApPat"] . "',
+                '" . $data["ApMat"] . "',
+                '" . $data["phone_number"] . "',
+                '" . $data["email"] . "',
+                '" . $data["sexo"] . "', 
+                " . $data["school_proc"] . ", 
+                " . $data["score"] . ",
+                " . $data["ESCOMopt"] . ",
+                '" . $data["street"] . "',
+                '" . $data["colonia"] . "',
+                '" . $data["num_street"] . "',
+                '" . $data["postal_code"] . "',
+                " . $data["state"] . ",
+                '" . $data["birth"] . "',
+                '" . $data["school"] . "',
                 1);";
         $this->db->executeQuery($query);
     }
@@ -126,7 +147,7 @@ class User
     }
 }
 
-if(isset($_REQUEST["data"])){
+if (isset($_REQUEST["data"])) {
     require_once("../controllers/db.class.php");
     $db = new DB();
     $user = new User($db);
