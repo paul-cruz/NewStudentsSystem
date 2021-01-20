@@ -30,7 +30,7 @@ class Admin
                         "col_size" => "4",
                         "title" => "Administradores",
                         "child" => new Template("views/components/tables/table.html", [
-                            "title" => "Admins",
+                            "title" => "Admin",
                             "data" => array(
                                 array(
                                     "id" => 1,
@@ -41,9 +41,9 @@ class Admin
                                     "name" => "Name 2"
                                 )
                             ),
-                            "insertModal" => new Template("views/components/forms/Admins/insert.html", []),
-                            "deleteModal" => new Template("views/components/forms/Admins/delete.html", []),
-                            "updateModal" => new Template("views/components/forms/Admins/update.html", []),
+                            "insertModal" => new Template("views/components/forms/Admin/insert.html", []),
+                            "deleteModal" => new Template("views/components/forms/Admin/delete.html", []),
+                            "updateModal" => new Template("views/components/forms/Admin/update.html", []),
                         ])
                     ]),
                     new Template("views/components/cards/home_card.html", [

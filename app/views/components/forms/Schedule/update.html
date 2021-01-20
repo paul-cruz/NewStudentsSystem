@@ -8,16 +8,15 @@
             </div>
         </div>
         <div class="mt-2 mx-2 mb-2 row justify-content-center">
+            <button id="clrBusSchUp" type="button" class="btn btn-outline-secondary btn-sm col-4">Limpiar</button>
             <button id="btnBusSchUp" type="button" class="btn btn-outline-primary btn-sm col-4">Buscar</button>
         </div>
         <div id="datosSchUp" class="hide">
             <div class="mx-2 mb-2 row">
-                <label class="col-form-label col-sm-5 col-6"><strong>ID Horario:</strong></label>
-                <label class="col-form-label col-sm-7 col-6" name="idHorario">"ID Horario"</label>
-            </div>
-            <div class="mx-2 mb-2 row">
-                <label class="col-form-label col-sm-5 col-6"><strong>Horario:</strong></label>
-                <label class="col-form-label col-sm-7 col-6" name="calHor">"Horario"</label>
+                <label for="calHor" class="col-sm-4 col-form-label"><strong>Horario</strong></label>
+                <div class="col-sm-8">
+                    <input type="time" class="form-control" id="calHor" name="horario">
+                </div>
             </div>
         </div>
     </fieldset>
@@ -28,6 +27,11 @@
         if($("#updateScheduleForm").valid()){
             $("#datosSchUp").removeClass("hide")
         }
+    })
+
+    $("#clrBusSchUp").click(() =>{
+        $("#updateScheduleForm").trigger("reset")
+        $("#datosSchUp").addClass("hide")
     })
 
     $("#updateScheduleForm").validate({

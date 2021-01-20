@@ -1,4 +1,4 @@
-<form id="deleteAdminsForm" action="" method="post" class="w-90 form3 needs-validation">
+<form id="deleteAdminForm" action="" method="post" class="w-90 form3 needs-validation">
     <fieldset class="border p-2">
         <legend class="w-auto">Administrador</legend>
         <div class="mx-2 mb-2 row">
@@ -8,6 +8,7 @@
             </div>
         </div>
         <div class="mt-2 mx-2 mb-2 row justify-content-center">
+            <button id="clrBusAdDel" type="button" class="btn btn-outline-secondary btn-sm col-4">Limpiar</button> 
             <button id="btnBusAdDel" type="button" class="btn btn-outline-primary btn-sm col-4">Buscar</button>
         </div>
         <div id="datosAdDel" class="hide">
@@ -37,12 +38,17 @@
 
 <script type="text/javascript">
     $("#btnBusAdDel").click(() =>{
-        if($("#deleteAdminsForm").valid()){
+        if($("#deleteAdminForm").valid()){
             $("#datosAdDel").removeClass("hide")
         }
     })
 
-    $("#deleteAdminsForm").validate({
+    $("#clrBusAdDel").click(() =>{
+        $("#deleteAdminForm").trigger("reset")
+        $("#datosAdDel").addClass("hide")
+    })
+
+    $("#deleteAdminForm").validate({
         rules: {
             claveTrabajo: {
                 required: true,

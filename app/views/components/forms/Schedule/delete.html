@@ -8,13 +8,10 @@
             </div>
         </div>
         <div class="mt-2 mx-2 mb-2 row justify-content-center">
+            <button id="clrBusSchDel" type="button" class="btn btn-outline-secondary btn-sm col-4">Limpiar</button>
             <button id="btnBusSchDel" type="button" class="btn btn-outline-primary btn-sm col-4">Buscar</button>
         </div>
         <div id="datosSchDel" class="hide">
-            <div class="mx-2 mb-2 row">
-                <label class="col-form-label col-sm-5 col-6"><strong>ID Horario:</strong></label>
-                <label class="col-form-label col-sm-7 col-6" name="idHorario">"ID Horario"</label>
-            </div>
             <div class="mx-2 mb-2 row">
                 <label class="col-form-label col-sm-5 col-6"><strong>Horario:</strong></label>
                 <label class="col-form-label col-sm-7 col-6" name="calHor">"Horario"</label>
@@ -28,6 +25,11 @@
         if($("#deleteScheduleForm").valid()){
             $("#datosSchDel").removeClass("hide")
         }
+    })
+
+    $("#clrBusSchDel").click(() =>{
+        $("#deleteScheduleForm").trigger("reset")
+        $("#datosSchDel").addClass("hide")
     })
 
     $("#deleteScheduleForm").validate({

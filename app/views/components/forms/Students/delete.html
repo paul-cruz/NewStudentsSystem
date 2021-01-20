@@ -8,6 +8,7 @@
             </div>
         </div>
         <div class="mt-2 mx-2 mb-2 row justify-content-center">
+            <button id="clrBusStuDel" type="button" class="btn btn-outline-secondary btn-sm col-4">Limpiar</button>
             <button id="btnBusStuDel" type="button" class="btn btn-outline-primary btn-sm col-4">Buscar</button>
         </div>
         <div id="datosStuDel" class="hide">
@@ -28,6 +29,11 @@
         if($("#deleteStudentsForm").valid()){
             $("#datosStuDel").removeClass("hide")
         }
+    })
+
+    $("#clrBusStuDel").click(() =>{
+        $("#deleteStudentsForm").trigger("reset")
+        $("#datosStuDel").addClass("hide")
     })
 
     $("#deleteStudentsForm").validate({
