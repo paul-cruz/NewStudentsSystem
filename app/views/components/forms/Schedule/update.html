@@ -1,10 +1,10 @@
 <form id="updateScheduleForm" action="" method="post" class="w-90 form3 needs-validation">
     <fieldset class="border p-2">
-        <legend class="w-auto">Horarios de examen</legend>
+        <legend class="w-auto">Grupos</legend>
         <div class="mx-2 mb-2 row">
-            <label for="txtIdHor" class="col-sm-4 col-form-label">ID Horario:</label>
+            <label for="txtIdHor" class="col-sm-4 col-form-label">ID Grupo:</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="txstIdHor" name="idHorario" maxlength="5">
+                <input type="text" class="form-control" id="txstIdHor" name="idGrupo" maxlength="5">
             </div>
         </div>
         <div class="mt-2 mx-2 mb-2 row justify-content-center">
@@ -15,7 +15,13 @@
             <div class="mx-2 mb-2 row">
                 <label for="calHor" class="col-sm-4 col-form-label"><strong>Horario</strong></label>
                 <div class="col-sm-8">
-                    <input type="time" class="form-control" id="calHor" name="horario">
+                    <input type="time" class="form-control" id="calHor" name="horarioUp">
+                </div>
+            </div>
+            <div class="mx-2 mb-2 row">
+                <label for="txtInscr" class="col-sm-4 col-form-label"><strong>Inscritos</strong></label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtInscr" name="inscritos" maxlength="2">
                 </div>
             </div>
         </div>
@@ -36,19 +42,37 @@
 
     $("#updateScheduleForm").validate({
         rules: {
-            idHorario: {
+            idGrupo: {
                 required: true,
                 pattern: /[0-9]/,
                 minlength: 5,
                 maxlength: 5
+            },
+            horarioUp: {
+                required: true
+            },
+            inscritos: {
+                required: true,
+                pattern: /[0-9]/,
+                minlength: 1,
+                maxlength:2
             }
         },
         messages: {
-            idHorario: {
+            idGrupo: {
                 required: "Introduce el ID del horario",
                 pattern: "Introduce un ID de horario valido",
                 minlength: "El ID del horario debe ser de 5 digitos",
                 maxlength: "El ID del horario debe ser de 5 digitos"
+            },
+            horarioUp: {
+                required: "Introduce el horario por favor"
+            },
+            inscritos: {
+                required: "Introduce el No. de inscritos",
+                pattern: "Introduce un No. de inscritos valido",
+                minlength: "El No. de inscritos debe ser mínimo de 1 digito",
+                maxlength: "El No. de inscritos debe ser máximo de 2 digitos"
             }
         }
     })

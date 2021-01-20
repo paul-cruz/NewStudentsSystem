@@ -411,7 +411,6 @@
                 type: "GET",
                 success: function(data){
                     data = data.split(",");
-                    console.log(data);
                     $("input[name=boleta]").val(data[0]);
                     $("input[name=name]").val(data[1]);
                     $("input[name=ApPat]").val(data[2]);

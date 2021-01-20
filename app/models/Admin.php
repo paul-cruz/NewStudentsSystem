@@ -82,7 +82,7 @@ class Admin
                         "col_size" => "4",
                         "title" => "Horarios de Examen",
                         "child" => new Template("views/components/tables/table.html", [
-                            "title" => "Schedule",
+                            "title" => "Group",
                             "data" => $groups,
                             "insertModal" => new Template("views/components/forms/Schedule/insert.html", []),
                             "deleteModal" => new Template("views/components/forms/Schedule/delete.html", []),
@@ -93,7 +93,7 @@ class Admin
                         "col_size" => "4",
                         "title" => "Alumnos inscritos",
                         "child" => new Template("views/components/tables/table.html", [
-                            "title" => "Students",
+                            "title" => "Student",
                             "data" => $inscritos,
                             "insertModal" => new Template("views/components/forms/Students/insert.html", []),
                             "deleteModal" => new Template("views/components/forms/Students/delete.html", []),
@@ -102,9 +102,9 @@ class Admin
                     ]),
                     new Template("views/components/cards/home_card.html", [
                         "col_size" => "12",
-                        "title" => "Alumnos registrados",
+                        "title" => "Usuarios registrados",
                         "child" => new Template("views/components/tables/table.html", [
-                            "title" => "registered",
+                            "title" => "User",
                             "data" => $students,
                             "insertModal" => new Template("views/components/forms/Students/insert.html", []),
                             "deleteModal" => new Template("views/components/forms/Students/delete.html", []),
@@ -131,13 +131,29 @@ class Admin
         # code...
     }
 
-    public function update($id)
+    public function update($data)
     {
-        # code...
+        $query = "UPDATE Administrador SET nombre = '".$data["nombre"]."', apPat = '".$data["ApPatA"]."', apMat = '".$data["ApMatA"]."', puesto = '".$data["puesto"]."' WHERE numeroEmpleado = '".$data["claveTrabajo"]."'"; 
+        $result = $this->db->executeQuery($query);
     }
 
     public function delete($id)
     {
-        # code...
+        $query = "DELETE FROM Administrador WHERE numeroEmpleado = '".$id["claveTrabajo"]."'";
+        $this->db->executeQuery($query);
     }
+}
+
+if(isset($_REQUEST["delete"])){
+    require_once("../controllers/db.class.php");
+    $db = new DB();
+    $admin = new Admin($db);
+    $admin->delete($_REQUEST["delete"]);
+}
+
+if(isset($_REQUEST["update"])){
+    require_once("../controllers/db.class.php");
+    $db = new DB();
+    $admin = new Admin($db);
+    $admin->update($_REQUEST["update"]);
 }
