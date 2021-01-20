@@ -10,6 +10,10 @@ class Pdf
     {
         session_start();
 
+        if(!$_SESSION['idUsuario']){
+            header('location: /');
+        }
+        
         $db = new DB();
         $user = (array) $db->queryOne("SELECT boleta, Alumno.nombre, apPat, apMat, telefono, correoE, genero, curp, Grupo.idGrupo AS 'grupo', Grupo.horaExamen AS 'horario', CatalogoDeEscuelas.nombre AS 'Escuela', promedio, opcionESCOM, calle, colonia, numero, codigoP AS 'CP', EntidadFederativa.nombre AS 'state', fechNac, nombreEscuela AS 'Nombre Escuela' FROM Alumno INNER JOIN EntidadFederativa ON Alumno.idEntFed = EntidadFederativa.idEntFed LEFT JOIN CatalogoDeEscuelas ON Alumno.idEscuela = CatalogoDeEscuelas.idEscuela INNER JOIN Grupo ON Alumno.grupo = Grupo.idGrupo WHERE boleta = '" . $_SESSION['idUsuario'] . "'");
 
