@@ -22,6 +22,37 @@ class Admin
             }
         }
 
+        $admins = array();
+        $groups = array();
+        $students = array(); 
+        
+        $result = $this->db->executeQuery("SELECT * FROM Administrador");
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $admins[] = ["Numero de empleado"=>$row['numeroEmpleado'], "Nombre"=>$row["nombre"], "Apellido"=>$row["apPat"], "Puesto"=>$row["puesto"]];
+            }
+          } else {
+            echo "0 results";
+        }
+
+        $result = $this->db->executeQuery("SELECT * FROM Grupo");
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $groups[] = ["Grupo"=>$row['idGrupo'], "Hora de exámen"=>$row["horaExamen"], "Alumnos inscritos"=>$row["inscritos"]];
+            }
+          } else {
+            echo "0 results";
+        }
+
+        $result = $this->db->executeQuery("SELECT * FROM Alumno");
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $students[] = ["Boleta"=>$row['boleta'], "Nombre"=>$row["nombre"], "Apellido paterno"=>$row["apPat"], "Apellido materno" => $row["apMat"], "Grupo" => $row["grupo"], "Teléfono" => $row["telefono"], "Correo" => $row["correoE"], "Promedio" => $row["promedio"], "Calle" => $row["calle"], "Número" => $row["numero"], "Colonia" => $row["colonia"], "Código postal" => $row["codigoP"], "Fecha de nacimiento" => $row["fechNac"], "CURP" => $row["curp"]];
+            }
+          } else {
+            echo "0 results";
+        }
+
         return [
             "header" => new Template("views/components/headers/inner_header.html", []),
             "child" => new Template("views/home.html", [
@@ -31,16 +62,7 @@ class Admin
                         "title" => "Administradores",
                         "child" => new Template("views/components/tables/table.html", [
                             "title" => "Admin",
-                            "data" => array(
-                                array(
-                                    "id" => 1,
-                                    "name" => "Name 1"
-                                ),
-                                array(
-                                    "id" => 2,
-                                    "name" => "Name 2"
-                                )
-                            ),
+                            "data" => $admins,
                             "insertModal" => new Template("views/components/forms/Admin/insert.html", []),
                             "deleteModal" => new Template("views/components/forms/Admin/delete.html", []),
                             "updateModal" => new Template("views/components/forms/Admin/update.html", []),
@@ -51,16 +73,7 @@ class Admin
                         "title" => "Horarios de Examen",
                         "child" => new Template("views/components/tables/table.html", [
                             "title" => "Schedule",
-                            "data" => array(
-                                array(
-                                    "id" => 1,
-                                    "name" => "Name 3"
-                                ),
-                                array(
-                                    "id" => 2,
-                                    "name" => "Name 4"
-                                )
-                            ),
+                            "data" => $groups,
                             "insertModal" => new Template("views/components/forms/Schedule/insert.html", []),
                             "deleteModal" => new Template("views/components/forms/Schedule/delete.html", []),
                             "updateModal" => new Template("views/components/forms/Schedule/update.html", []),
@@ -71,16 +84,7 @@ class Admin
                         "title" => "Alumnos inscritos",
                         "child" => new Template("views/components/tables/table.html", [
                             "title" => "Students",
-                            "data" => array(
-                                array(
-                                    "id" => 1,
-                                    "name" => "Name 5"
-                                ),
-                                array(
-                                    "id" => 2,
-                                    "name" => "Name 6"
-                                )
-                            ),
+                            "data" => $students,
                             "insertModal" => new Template("views/components/forms/Students/insert.html", []),
                             "deleteModal" => new Template("views/components/forms/Students/delete.html", []),
                             "updateModal" => new Template("views/components/forms/Students/update.html", []),
