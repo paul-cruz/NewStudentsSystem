@@ -102,9 +102,9 @@ class Admin
                     ]),
                     new Template("views/components/cards/home_card.html", [
                         "col_size" => "12",
-                        "title" => "User",
+                        "title" => "Usuarios registrados",
                         "child" => new Template("views/components/tables/table.html", [
-                            "title" => "registered",
+                            "title" => "User",
                             "data" => $students,
                             "insertModal" => new Template("views/components/forms/Students/insert.html", []),
                             "deleteModal" => new Template("views/components/forms/Students/delete.html", []),
