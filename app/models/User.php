@@ -182,9 +182,11 @@ class User
         return $row;
     }
 
-    public function update($id)
+    public function update($data)
     {
-        # code...
+        $query = "UPDATE Alumno SET nombre = '".$data["name"]."', apPat = '".$data["ApPat"]."', apMat = '".$data["ApMat"]."', telefono = '".$data["phone_number"]."', correoE = '".$data["email"]."', genero = '".$data["sexo"]."', curp = '".$data["curp"]."', idEscuela = ".$data["school_proc"].", promedio = ".$data["score"].", opcionESCOM = ".$data["ESCOMopt"].", calle = '".$data["street"]."', colonia = '".$data["colonia"]."', numero = '".$data["num_street"]."', codigoP = '".$data["postal_code"]."', idEntFed = ".$data["state"].", fechNac = '".$data["birth"]."', nombreEscuela = '".$data["school"]."' WHERE boleta = '".$data["boleta"]."';";
+        $row = $this->db->executeQuery($query);
+        return $row;
     }
 
     public function delete($id)
@@ -206,4 +208,12 @@ if(isset($_REQUEST["get"])){
     $db = new DB();
     $user = new User($db);
     $user->read($_REQUEST["get"]);
+}
+
+if(isset($_REQUEST["update"])){
+    require_once("../controllers/db.class.php");
+    session_start();
+    $db = new DB();
+    $user = new User($db);
+    $user->update($_REQUEST["update"]);
 }
