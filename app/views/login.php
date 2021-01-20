@@ -56,10 +56,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 </div>
                 <div class="card-body">
                     <div class="row justify-content-center text-center">
-                        <form action="" method="POST" class="w-75 login-form">
+                        <form id="loginForm" action="" method="POST" class="w-75 login-form">
                             <input type="text" name="username" class="form-control" placeholder="Boleta">
                             <input type="password" name="password" class="form-control" placeholder="Contraseña">
-                            <input type="submit" name="btn" value="Iniciar Sesión" class="btn btn-outline-primary">
+                            <div>
+                                <input type="submit" name="btn" value="Iniciar Sesión" class="btn btn-outline-primary">
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -68,3 +70,45 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         <div class="col-lg-2 col-md-2"></div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function() {
+        $("#loginForm").validate({
+            rules: {
+                username: {
+                    required: true,
+                    pattern: /P+([P,E])+([0–9]{8})|ADMIN+([0-9]{5})/,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                password: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                }
+            },
+            messages: {
+                username: {
+                    required: "Ingresa un usuario por favor",
+                    pattern: "Usuario inválido",
+                    maxlength: "El usuario debe ser de 10 caracteres",
+                    minlength: "El usuario debe ser de 10 caracteres",
+                },
+                password: {
+                    required: "Ingresa tu contraseña por favor",
+                    maxlength: "La contraseña debe ser de 10 caracteres",
+                    minlength: "La contraseña debe ser de 10 caracteres",
+                }
+            },
+            highlight: function(e) {
+                $(e).addClass("is-invalid");
+                $(e).removeClass("is-valid");
+            },
+            unhighlight: function(e) {
+                $(e).addClass("is-valid");
+                $(e).removeClass("is-invalid");
+            },
+        });
+
+    });
+</script>
