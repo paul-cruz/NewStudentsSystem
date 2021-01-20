@@ -1,0 +1,645 @@
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center vh-100">
+        <div class="col-lg-2 col-md-2"></div>
+        <div id="main-form" class="col-lg-8 col-md-8">
+            <div class="card border my-5">
+                <div class="card-header text-center p-3">
+                    <h3 id="form-title"> Actualización de tus datos</h3>
+                    <h3 id="form-subtitle"> Verifica y cambia en caso de ser necesario tus datos </h3>
+                </div>
+                <div class="card-body">
+                    <form id="studentForm" action="" method="post" class="w-90 form3 needs-validation">
+                        <fieldset id="form1" class="border p-2">
+                            <legend class="w-auto">Identidad</legend>
+                            <div class="mx-2 mb-2 row">
+                                <label for="txtBoleta" class="col-sm-2 col-form-label">No. Boleta:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="txtBoleta" name="boleta"  disabled maxlength="10">
+                                </div>
+                                <label for="txtName" class="col-sm-2 col-form-label">Nombre(s):</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="txtName" name="name" maxlength="30">
+                                </div>
+                            </div>
+
+                            <div class="mx-2 mb-2 row">
+                                <label for="txtApPat" class="col-sm-2 col-form-label">Apellido paterno:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="txtApPat" name="ApPat" maxlength="15">
+                                </div>
+                                <label for="txtApMat" class="col-sm-2 col-form-label">Apellido materno:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="txtApMat" name="ApMat" maxlength="15">
+                                </div>
+                            </div>
+
+                            <div class="mx-2 mb-2 row">
+                                <label for="calBirth" class="col-sm-2 col-form-label">Fecha de nacimiento:</label>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="calBirth" name="birth">
+                                </div>
+                                <label class="col-sm-2 col-form-label">Sexo:</label>
+                                <div class="col-sm-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="sexo" id="chkSexF" value="F"
+                                            checked>
+                                        <label class="form-check-label" for="chkSexF">Femenino</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="sexo" id="chkSexM" value="M">
+                                        <label class="form-check-label" for="chkSexM">Masculino</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mx-2 mb-2 row">
+                                <label for="txtCurp" class="col-sm-2 col-form-label">CURP:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="txtCurp" name="curp" maxlength="18">
+                                </div>
+                            </div>
+
+                        </fieldset>
+                        <fieldset id="form2" class="border p-2 hide">
+                            <legend class="w-auto">Contacto</legend>
+
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-2" for="street">Calle: </label>
+                                <div class="col-md-4">
+                                    <input name="street" type="text" class="form-control" maxlength="20"/>
+                                </div>
+                                <label class="col-form-label col-sm-2 " for="num_street">Número: </label>
+                                <div class="col-md-4">
+                                    <input name="num_street" type="text" class="form-control" maxlength="4"/>
+                                </div>
+                            </div>
+
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-2" for="colonia">Colonia: </label>
+                                <div class="col-md-10 col-12">
+                                    <input name="colonia" type="text" class="form-control" maxlength="60"/>
+                                </div>
+                            </div>
+
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-2" for="postal_code">Codigo postal: </label>
+                                <div class="col-md-4">
+                                    <input name="postal_code" type="text" class="form-control" maxlength="5"/>
+                                </div>
+
+
+                                <label class="form-label col-sm-2" for="phone_number">Telefono o celular: </label>
+                                <div class="col-md-4">
+                                    <input name="phone_number" type="text" class="form-control" maxlength="10"/>
+                                </div>
+                            </div>
+
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-2" for="email">Correo electronico: </label>
+                                <div class="col-md-10">
+                                    <input name="email" type="email" class="form-control" maxlength="50"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset id="form3" class="border p-2 hide">
+                            <legend class="w-auto">Procedencia</legend>
+                            <div class="mb-2 mx-2 row">
+                                <label class="col-form-label col-sm-3" for="state">Entidad federativa de
+                                    procedencia:</label>
+                                <div class="col-md-9">
+                                    <select name="state" class="form-control">
+                                        <option selected>--Seleccionar--</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-4" for="cecyt-graduate">¿Eres egresado de un
+                                    CECyT?</label>
+                                <div class="col-md-7">
+                                    <input id="chkFromCECyT" type="checkbox" class="form-check-input" value="1" />
+                                </div>
+                            </div>
+                            <div id="ddlCECyTs" class="mx-2 mb-2 row hide">
+                                <label class="col-form-label col-sm-3" for="school_proc">Escuela de procedencia:</label>
+                                <div class="col-md-9">
+                                    <select name="school_proc" class="form-control">
+                                        <option selected>--Seleccionar--</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div id="school_name" class="mx-2 mb-2 row">
+                                <label class="col-form-label col-sm-3" for="school">Nombre de la escuela: </label>
+                                <div class="col-md-9">
+                                    <input name="school" type="text" class="form-control" maxlength="30"/>
+                                </div>
+                            </div>
+
+                            <div class="mb-2 mx-2 row">
+                                <label class="col-form-label col-sm-3" for="score">Promedio: </label>
+                                <div class="col-md-2">
+                                    <input name="score" type="text" class="form-control" maxlength="5"/>
+                                </div>
+                                <label class="col-form-label col-sm-3" for="option">Número de opción de ESCOM:</label>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ESCOMopt" id="inlineRadio1"
+                                            value="1" checked>
+                                        <label class="form-check-label" for="inlineRadio1">Primera</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio2" value="2">
+                                        <label class="form-check-label" for="inlineRadio2">Segunda</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio3" value="3">
+                                        <label class="form-check-label" for="inlineRadio3">Tercera</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio4" value="4">
+                                        <label class="form-check-label" for="inlineRadio4">Cuarta</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="card-footer text-center">
+                            <div class="text-center">
+                                <input type="reset" class="btn btn-outline-secondary m-3" value="Limpiar"
+                                    name="clean" />
+                                <nav id="form-pagination">
+                                    <ul class="pagination justify-content-center">
+                                        <li id="page-prev" class="page-item">
+                                            <a class="page-link" href="" aria-label="Previous" id="previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="" id="identidad">Identidad</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="" id="contacto">Contacto</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href=""
+                                                id="procedencia">Procedencia</a>
+                                        </li>
+                                        <li id="page-next" class="page-item">
+                                            <a class="page-link" href="" aria-label="Next" id="next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <input type="submit" class="btn btn-outline-primary m-3" value="Enviar" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="verify-form" class="col-lg-8 col-md-8 hide">
+            <div class="card text-center border my-5">
+                <div class="card-header p-3">
+                    <h2 class="mt-1"> Un ultimo vistazo </h2>
+                </div>
+                <div class="card-body">
+                    <div class="row justify-content-center text-center">
+                        <h4>Por favor verifica que tus datos sean correctos y así finalicemos el registro:</h4>
+                    </div>
+                    <h5>Identidad</h5>
+                    <div class="mx-2 mb-2 row">
+                        <label class="col-form-label col-sm-3 col-6"><strong>No.Boleta:</strong></label>
+                        <label class="col-form-label col-sm-3 col-6" name="boleta">"No.Boleta"</label>
+                        <label class="col-form-label col-sm-3 col-6"><strong>Nombre(s):</strong></label>
+                        <label class="col-form-label col-sm-3 col-6" name="name">"Nombre(s)" </label>
+                    </div>
+                    <div class="mx-2 mb-2 row">
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Apellido Paterno:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="ApPat">"Apellido Paterno" </label>
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Apellido Materno:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="ApMat">"Apellido Materno"</label>
+                    </div>
+                    <div class="mx-2 mb-2 row">
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Fecha de Nacimiento:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="birth">"Fecha de Nacimiento" </label>
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Sexo:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="sexo">"Sexo"</label>
+                    </div>
+                    <div class="mx-2 mb-2 row">
+                        <label class="col-form-label col-sm-6 col-6"><strong>CURP:</strong></label>
+                        <label class="col-form-label col-sm-6 col-6" name="curp">"CURP" </label>
+                    </div>
+                    <h5>Contacto</h5>
+                    <hr />
+                    <div class="mx-2 mb-2 row">
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Calle:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="street">"Calle"</label>
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Número:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="num_street">"numero"</label>
+                    </div>
+                    <div class="mx-2 mb-2 row">
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Colonia:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="colonia">"Colonia" </label>
+                        <label class="col-form-label  col-sm-3 col-6"><strong>CP:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="postal_code">"Codigo Postal"</label>
+                    </div>
+                    <div class="mx-2 mb-2 row">
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Teléfono:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="phone_number">"Teléfono" </label>
+                        <label class="col-form-label col-sm-3 col-6"><strong>Correo:</strong></label>
+                        <label class="col-form-label col-sm-3 col-6" name="email">"Correo"</label>
+                    </div>
+                    <h5>Procedencia</h5>
+                    <hr />
+                    <div class="mx-2 mb-2 row">
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Entidad Federativa:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="state">"Entidad Federativa"</label>
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Escuela de procedencia:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="school_proc">"Escuela de procedencia"
+                        </label>
+                    </div>
+                    <div class="mx-2 mb-2 row">
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Promedio:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="score">"Promedio"</label>
+                        <label class="col-form-label  col-sm-3 col-6"><strong>Número de opción:</strong></label>
+                        <label class="col-form-label  col-sm-3 col-6" name="ESCOMopt">"Opción" </label>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <input id="btnModify" type="button" class="btn btn-outline-danger m-3" value="Modificar" />
+                    <input type="button" class="btn btn-outline-primary m-3" value="Verificar" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var page = 1
+        $(".page-link").click((e) => {
+            e.preventDefault()
+            $("#form" + page).addClass("hide")
+            switch (e.currentTarget.id) {
+                case "contacto":
+                    page = 2
+                    break;
+                case "procedencia":
+                    page = 3
+                    break;
+                case "next":
+                    if (++page > 3) { page = 1 }
+                    break;
+                case "previous":
+                    if (--page < 1) { page = 3 }
+                    break;
+                default:
+                    page = 1
+                    break;
+            }
+            setHeaderText(page)
+            $("#form" + page).removeClass("hide")
+        });
+
+        function setHeaderText(pag) {
+            let titles = ["Actualiza tus datos de identidad", "Datos de contacto", "Datos de procedencia"]
+            let subtitles = ["Verifica tus datos y actualiza!", "", ""]
+            $("#form-title").text(titles[pag - 1])
+            $("#form-subtitle").text(subtitles[pag - 1])
+        }
+
+        $.validator.addMethod("valueNotEquals", function(value, element, arg){
+            return arg !== value;
+        }, "Value must not equal arg.");
+
+        $("#chkFromCECyT").change((e) => {
+            e.preventDefault();
+            if (e.target.checked) {
+                $("#ddlCECyTs").removeClass("hide")
+                $("#school_name").addClass("hide")
+            } else {
+                $("#ddlCECyTs").addClass("hide")
+                $("#school_name").removeClass("hide")
+            }
+        })
+
+        $("#btnModify").click(() => {
+            $("#main-form").removeClass("hide")
+            $("#verify-form").addClass("hide")
+        })
+
+        var states = [], schools = [];
+        $(document).ready(function() {
+            $.ajax({
+                url: "../models/State.php",
+                type: "GET",
+                data: {data: "get"},
+                success: function(response){
+                    response = response.split(",").filter((el)=>el!="");
+                    $.each(response, function(key, value){
+                        states.push(value);
+                        var option = new Option(value, key+1);
+                        $(option).html(value);
+                        $("select[name=state]").append(option);
+                    });
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+
+            $.ajax({
+                url: "../models/School.php",
+                type: "GET",
+                data: {data: "get"},
+                success: function(response){
+                    response = response.split(",").filter((el)=>el!="");
+                    $.each(response, function(key, value){
+                        schools.push(value);
+                        var option = new Option(value, key+1);
+                        $(option).html(value);
+                        $("select[name=school_proc]").append(option);
+                    });
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+        });
+
+        $("#studentForm").submit((e) => {
+            if ($("#studentForm").valid()) {
+                $("#main-form").addClass("hide")
+                var content = {};
+                $.each($("#studentForm").serializeJSON(), function (key, value) {
+                    content[key] = value;
+                    if(key=="state"){
+                        $("label[name=state]").text(states[value-1]);
+                    } else if(key == "school_proc"){
+                        $("label[name=school_proc]").text(schools[value-1]);
+                    } else{
+                        $("label[name='" + key + "']").text(value);
+                    }
+                });
+
+                $.ajax({
+                        url: "../models/User.php",
+                        data: {data: content},
+                        success: function(data){
+                            console.log(data)
+                            window.location.href = '/User';
+                        },
+                        error: function(data){
+                            alert("error")
+                        }
+                    })
+                $("#verify-form").removeClass("hide")
+            }
+            e.preventDefault()
+        })
+
+        $(document).ready(function(){
+            $.ajax({
+                url: "../models/User.php",
+                data: {"get": "session"},
+                type: "GET",
+                success: function(data){
+                    data = data.split(",");
+                    console.log(data);
+                    $("input[name=boleta]").val(data[0]);
+                    $("input[name=name]").val(data[1]);
+                    $("input[name=ApPat]").val(data[2]);
+                    $("input[name=ApMat]").val(data[3]);
+                    $("input[name=birth]").val(data[6]);
+                    data[7]=="M"?$("#chkSexM").prop("checked", true) : $("#chkSexF").prop("checked", true);
+                    $("input[name=curp]").val(data[8]);
+                    $("input[name=street]").val(data[13]);
+                    $("input[name=num_street]").val(data[15]);
+                    $("input[name=colonia]").val(data[14]);
+                    $("input[name=postal_code]").val(data[16]);
+                    $("input[name=phone_number]").val(data[5]);
+                    $("input[name=email]").val(data[4]);
+                    $("select[name=state]").find("option[value='"+data[17]+"']").attr("selected", true);
+                    
+                    if(data[19]!=""){
+                        //School name
+                        $("#chkFromCECyT").attr("checked", false);
+                        $("#ddlCECyTs").addClass("hide");
+                        $("#school_name").removeClass("hide");
+                        $("input[name=school]").val(data[19]);
+                    } else {
+                        //School proc
+                        $("#chkFromCECyT").attr("checked", true);
+                        $("#ddlCECyTs").removeClass("hide")
+                        $("#school_name").addClass("hide")
+                        $("select[name=school_proc]").find("option[value='"+data[10]+"']").attr("selected", true);
+                    }
+                    $("input[name=score]").val(data[11]);
+                    $("#inlineRadio"+data[12]).prop("checked", true);
+                },
+                error: function(data){
+                    alert(data);
+                }
+            });
+        });
+        var d = new Date();
+        var y = (d.getFullYear()-17).toString();
+        var m = (d.getMonth()+1).toString();
+        var day = d.getDate().toString();
+        var strDate = y + "-" + (m[1]?m:"0"+m) + "-" + (day[1]?day:"0"+day);
+        $("#studentForm").validate({
+            rules: {
+                birth:{
+                    required: true,
+                    max: strDate
+                },
+                school_proc: {
+                    valueNotEquals:"--Seleccionar--"
+                },
+                state: {
+                    valueNotEquals:"--Seleccionar--"
+                },
+                boleta: {
+                    required: true,
+                    pattern: /(P)+([P,E])+([0–9]{8})/,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                curp: {
+                    required: true,
+                    pattern: /[A-Z][AEIOU][A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[HM](AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TL|TS|VZ|YN|ZS|NE)[QWRTYPSDFGHJKLÑZXCVBNM]{3}[0-9|A-Z][0-9]/,
+                    minlength: 18,
+                    maxlength: 18
+                },
+                phone_number: {
+                    required: true,
+                    pattern: /[0-9]{8,10}/,
+                    minlength: 8,
+                    maxlength: 10
+                },
+                email: {
+                    required: true,
+                    pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                    minlength: 6,
+                    maxlength: 50
+                },
+                postal_code: {
+                    required: true,
+                    pattern: /[0-9]{5}/,
+                    minlength: 5,
+                    maxlength: 5
+                },
+                name: {
+                    required: true,
+                    pattern: /[A-Za-z]/,
+                    minlength: 3,
+                    maxlength: 30
+                },
+                ApPat: {
+                    required: true,
+                    pattern: /[A-Za-z]/,
+                    minlength: 4,
+                    maxlength: 15
+                },
+                ApMat: {
+                    required: true,
+                    pattern: /[A-Za-z]/,
+                    minlength: 4,
+                    maxlength: 15
+                },
+                street: {
+                    required: true,
+                    pattern: /[A-Za-z0-9]/,
+                    minlength: 4,
+                    maxlength: 20
+                },
+                num_street: {
+                    required: true,
+                    pattern: /[A-Za-z0-9]/,
+                    minlength: 1,
+                    maxlength: 4
+                },
+                colonia: {
+                    required: true,
+                    pattern: /[A-Za-z]/,
+                    minlength: 6,
+                    maxlength: 60
+                },
+                school: {
+                    required: true,
+                    pattern: /[A-Za-z0-9]/,
+                    minlength: 6,
+                    maxlength: 30
+                },
+                score: {
+                    required: true,
+                    pattern: /[0-9]{1,2}(\.[0-9]{1,2}){0,1}/,
+                    minlength: 1,
+                    maxlength: 5
+                }
+            },
+            messages: {
+                birth:{
+                    required:"Elige una fecha valida",
+                    max: "Elige una fecha anterior"
+                },
+                school_proc: {
+                    valueNotEquals:"Elige una opción valida"
+                },
+                state: {
+                    valueNotEquals:"Elige una opción valida"
+                },
+                boleta: {
+                    required: "Ingresa tu boleta por favor",
+                    pattern: "Número de boleta invalido",
+                    maxlength: "La boleta debe ser de 10 caracteres",
+                    minlength: "La boleta debe ser de 10 caracteres",
+                },
+                curp: {
+                    required: "Ingresa tu CURP por favor",
+                    pattern: "CURP invalido",
+                    maxlength: "La CURP debe ser de 18 caracteres",
+                    minlength: "La CURP debe ser de 18 caracteres",
+                },
+                phone_number: {
+                    required: "Ingresa un número valido por favor",
+                    pattern: "Número invalido",
+                    maxlength: "El número debe ser de máximo 10 digitos",
+                    minlength: "El número debe ser de minimo 8 digitos",
+                },
+                email: {
+                    required: "Ingresa un correo electrónico valido por favor",
+                    pattern: "Correo electrónico invalido",
+                    maxlength: "El número debe ser de máximo 50 digitos",
+                    minlength: "El número debe ser de minimo 6 digitos",
+                },
+                postal_code: {
+                    required: "Ingresa tu código postal por favor",
+                    pattern: "Código postal invalido",
+                    minlength: "El código postal debe ser de 5 digitos",
+                    maxlength: "El código postal debe ser de 5 digitos",
+                },
+                name: {
+                    required: "Ingresa tu nombre por favor",
+                    pattern: "Nombre invalido",
+                    minlength: "El nombre debe ser máximo de 3 caracteres",
+                    maxlength: "El nombre debe ser mímino de 30 caracteres",
+                },
+                ApPat: {
+                    required: "Ingresa tu apellido paterno por favor",
+                    pattern: "Apellido paterno invalido",
+                    minlength: "El apellido paterno debe ser mínimo de 4 caracteres",
+                    maxlength: "El apellido paterno debe ser máximo de 15 caracteres",
+                },
+                ApMat: {
+                    required: "Ingresa tu apellido materno por favor",
+                    pattern: "Apellido materno invalido",
+                    minlength: "El apellido materno debe ser mínimo de 4 caracteres",
+                    maxlength: "El apellido materno debe ser máximo de 15 caracteres",
+                },
+                street: {
+                    required: "Ingresa el nombre de la calle por favor",
+                    pattern: "Calle invalida",
+                    minlength: "El nombre de la calle debe ser mínimo de 4 caracteres",
+                    maxlength: "El nombre de la calle debe ser máximo de 20 caracteres",
+                },
+                num_street: {
+                    required: "Ingresa el número de la dirección por favor",
+                    pattern: "Número invalido",
+                    minlength: "El número de la dirección debe ser mínimo de 1 dígito",
+                    maxlength: "El número de la dirección debe ser máximo de 4 dígitos",
+                },
+                colonia: {
+                    required: "Ingresa el nombre de la colonia por favor",
+                    pattern: "Colonia invalida",
+                    minlength: "El nombre de la colonia debe ser mínimo de 6 caracteres",
+                    maxlength: "El nombre de la colonia debe ser máximo de 60 caracteres",
+                },
+                school: {
+                    required: "Ingresa el nombre de la escuela por favor",
+                    pattern: "Escuela invalida",
+                    minlength: "El nombre de la escuela debe ser mínimo de 6 caracteres",
+                    maxlength: "El nombre de la escuela debe ser máximo de 30 caracteres",
+                },
+                score: {
+                    required: "Ingresa tu promedio por favor",
+                    pattern: "Promedio invalido",
+                    minlength: "El promedio debe ser mínimo de 1 digito",
+                    maxlength: "El promedio debe ser máximo de 5 dígitos",
+                }
+            },
+            highlight: function (e) {
+                $(e).addClass("is-invalid");
+                $(e).removeClass("is-valid");
+            },
+            unhighlight: function (e) {
+                $(e).addClass("is-valid");
+                $(e).removeClass("is-invalid");
+            },
+        });
+
+    });
+</script>
