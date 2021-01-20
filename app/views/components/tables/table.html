@@ -32,7 +32,8 @@
 </div>
 
 <!-- Insert Modal -->
-<div class="modal fade" id="insertModal<?= $title ?>" tabindex="-1" aria-labelledby="insertModal<?= $title ?>" aria-hidden="true">
+<div class="modal fade" id="insertModal<?= $title ?>" tabindex="-1" aria-labelledby="insertModal<?= $title ?>"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -43,7 +44,8 @@
                 <?=$insertModal?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button id="btnCancelInsert<?= $title ?>" type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Cancelar</button>
                 <button id="btnInsert<?= $title ?>" type="submit" class="btn btn-success">Agregar</button>
             </div>
         </div>
@@ -51,7 +53,8 @@
 </div>
 
 <!-- Update Modal -->
-<div class="modal fade" id="updateModal<?= $title ?>" tabindex="-1" aria-labelledby="updateModal<?= $title ?>" aria-hidden="true">
+<div class="modal fade" id="updateModal<?= $title ?>" tabindex="-1" aria-labelledby="updateModal<?= $title ?>"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -62,7 +65,8 @@
                 <?=$updateModal?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button id="btnCancelUpdate<?= $title ?>" type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Cancelar</button>
                 <button id="btnUpdate<?= $title ?>" type="button" class="btn btn-warning">Actualizar</button>
             </div>
         </div>
@@ -70,7 +74,8 @@
 </div>
 
 <!-- Insert Modal -->
-<div class="modal fade" id="deleteModal<?= $title ?>" tabindex="-1" aria-labelledby="deleteModal<?= $title ?>" aria-hidden="true">
+<div class="modal fade" id="deleteModal<?= $title ?>" tabindex="-1" aria-labelledby="deleteModal<?= $title ?>"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -81,8 +86,9 @@
                 <?=$deleteModal?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button  id="btnDelete<?= $title ?>"type="button" class="btn btn-danger">Eliminar</button>
+                <button id="btnCancelDelete<?= $title ?>" type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Cancelar</button>
+                <button id="btnDelete<?= $title ?>" type="button" class="btn btn-danger">Eliminar</button>
             </div>
         </div>
     </div>
@@ -90,17 +96,30 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#btnInsert"+'<?= $title ?>').click((e) => {
+
+        $("#btnCancelInsert" + '<?= $title ?>').click(() => {
+            $("#insert" + '<?= $title ?>' + "Form").trigger("reset")
+        })
+
+        $("#btnCancelUpdate" + '<?= $title ?>').click(() => {
+            $("#update" + '<?= $title ?>' + "Form").trigger("reset")
+        })
+
+        $("#btnCancelDelete" + '<?= $title ?>').click(() => {
+            $("#delete" + '<?= $title ?>' + "Form").trigger("reset")
+        })
+
+        $("#btnInsert" + '<?= $title ?>').click((e) => {
             console.log($("#insert" + '<?= $title ?>' + "Form").serializeJSON())
-            $("#insert"+'<?= $title ?>'+"Form").submit((e) =>{
+            $("#insert" + '<?= $title ?>' + "Form").submit((e) => {
                 e.preventDefault();
-                if($("#update"+'<?= $title ?>'+"Form").valid()){
-                    $.each($("#insert"+'<?= $title ?>'+"Form").serializeJSON(), function (key, value) {
+                if ($("#update" + '<?= $title ?>' + "Form").valid()) {
+                    $.each($("#insert" + '<?= $title ?>' + "Form").serializeJSON(), function (key, value) {
                         content[key] = value;
                         $("label[name='" + key + "']").text(value);
                     });
                     $.ajax({
-                        url: "../../../models/"+'<?= $title ?>'+".php",
+                        url: "../../../models/" + '<?= $title ?>' + ".php",
                         data: { data: user_data },
                         success: function (data) {
                             alert("Información guardada con exito")
@@ -109,19 +128,19 @@
                             alert("error")
                         }
                     })
-                }              
+                }
             })
         })
 
-        $("#btnUpdate"+'<?= $title ?>').click((e) => {
+        $("#btnUpdate" + '<?= $title ?>').click((e) => {
             console.log($("#update" + '<?= $title ?>' + "Form").serializeJSON())
-            if($("#update"+'<?= $title ?>'+"Form").valid()){
-                $.each($("#insert"+'<?= $title ?>'+"Form").serializeJSON(), function (key, value) {
+            if ($("#update" + '<?= $title ?>' + "Form").valid()) {
+                $.each($("#insert" + '<?= $title ?>' + "Form").serializeJSON(), function (key, value) {
                     content[key] = value;
                     $("label[name='" + key + "']").text(value);
                 });
                 $.ajax({
-                    url: "../../../models/"+'<?= $title ?>'+".php",
+                    url: "../../../models/" + '<?= $title ?>' + ".php",
                     data: { data: user_data },
                     success: function (data) {
                         alert("Información guardada con exito")
@@ -129,11 +148,11 @@
                     error: function (data) {
                         alert("error")
                     }
-                }) 
+                })
             }
         })
 
-        $("#btnDelete"+'<?= $title ?>').click((e) => {
+        $("#btnDelete" + '<?= $title ?>').click((e) => {
             console.log($("#delete" + '<?= $title ?>' + "Form").serializeJSON())
         })
     });
