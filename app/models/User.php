@@ -31,13 +31,15 @@ class User
                 header('location: /');
             }
         }
-        $user = (array) $this->db->queryOne("SELECT boleta AS 'Numero de Boleta', Alumno.nombre AS 'Nombre', apPat AS 'Apellido Paterno', apMat AS 'Apellido Materno', telefono AS 'Telefono', correoE AS 'Correo Electronico', genero AS 'Genero', grupo AS 'Grupo', CatalogoDeEscuelas.nombre AS 'Escuela', promedio AS 'Promedio', opcionESCOM AS'Opcion ESCOM', calle AS 'Calle', colonia AS 'Colonia', numero AS 'Numero', codigoP AS 'CP', EntidadFederativa.nombre AS 'Entidad Federativa', fechNac AS 'Fecha de nacimiento', nombreEscuela AS 'Nombre Escuela', verificado AS 'Verificado' FROM Alumno INNER JOIN EntidadFederativa ON Alumno.idEntFed = EntidadFederativa.idEntFed LEFT JOIN CatalogoDeEscuelas ON Alumno.idEscuela = CatalogoDeEscuelas.idEscuela WHERE boleta = '" . $_SESSION['idUsuario'] . "'");
+        $user = (array) $this->db->queryOne("SELECT boleta AS 'Numero de Boleta', Alumno.nombre AS 'Nombre', apPat AS 'Apellido Paterno', apMat AS 'Apellido Materno', telefono AS 'Telefono', correoE AS 'Correo Electronico', genero AS 'Genero', Grupo.idGrupo AS 'Grupo', Grupo.horaExamen AS 'Horario', CatalogoDeEscuelas.nombre AS 'Escuela', promedio AS 'Promedio', opcionESCOM AS'Opcion ESCOM', calle AS 'Calle', colonia AS 'Colonia', numero AS 'Numero', codigoP AS 'CP', EntidadFederativa.nombre AS 'Entidad Federativa', fechNac AS 'Fecha de nacimiento', nombreEscuela AS 'Nombre Escuela', verificado AS 'Verificado' FROM Alumno INNER JOIN EntidadFederativa ON Alumno.idEntFed = EntidadFederativa.idEntFed LEFT JOIN CatalogoDeEscuelas ON Alumno.idEscuela = CatalogoDeEscuelas.idEscuela INNER JOIN Grupo ON Alumno.grupo = Grupo.idGrupo WHERE boleta = '" . $_SESSION['idUsuario'] . "'");
         if ($user == false) {
             header('location: /User/form');
         }
 
         $image = $user["Genero"] == "M" ? "logo_hombre" : "logo_mujer";
         $user["Genero"] = $user["Genero"] == "M" ? "Masculino" : "Femenino";
+        $group = $user["Grupo"];
+        unset($user["Grupo"]);
         $time = $user["Horario"];
         unset($user["Horario"]);
         $_SESSION['verified'] = $user["Verificado"];
@@ -48,7 +50,6 @@ class User
             $user["Escuela"] = $user["Nombre Escuela"];
             unset($user["Nombre Escuela"]);
         }
-        $group = "1CM1";
 
 
         return [
@@ -122,9 +123,9 @@ class User
     public function create($data)
     {
         var_dump($data);
-
+        $group = $this->getGroup();
         $query = "INSERT INTO Alumno
-            (boleta, nombre, apPat, apMat, telefono, correoE, genero, idEscuela, promedio, opcionESCOM, calle, colonia, numero, codigoP, idEntFed, fechNac, nombreEscuela, curp, verificado)
+            (boleta, nombre, apPat, apMat, telefono, correoE, genero, idEscuela, promedio, opcionESCOM, calle, colonia, numero, codigoP, idEntFed, fechNac, nombreEscuela, curp, grupo, verificado)
              VALUES (
                 '" . $data["boleta"] . "',
                 '" . $data["name"] . "',
@@ -144,8 +145,18 @@ class User
                 '" . $data["birth"] . "',
                 '" . $data["school"] . "',
                 '" . $data["curp"] . "',
+                '" . $group["idGrupo"] . "',
                 1);";
         $this->db->executeQuery($query);
+        $i = intval($group["inscritos"]) + 1;
+        $query = "UPDATE Grupo SET inscritos = '" . $i . "' WHERE idGrupo = '" . $group["idGrupo"] . "'";
+        $this->db->executeQuery($query);
+    }
+
+    public function getGroup()
+    {
+        $row = (array) $this->db->queryOne("SELECT * FROM Grupo WHERE inscritos < 25 ORDER BY horaExamen LIMIT 1");
+        return $row;
     }
 
     public function update($id)
