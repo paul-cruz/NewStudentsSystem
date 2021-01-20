@@ -67,38 +67,38 @@
                             <div class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-2" for="street">Calle: </label>
                                 <div class="col-md-4">
-                                    <input name="street" type="text" class="form-control" maxlength="20"/>
+                                    <input name="street" type="text" class="form-control" maxlength="20" />
                                 </div>
                                 <label class="col-form-label col-sm-2 " for="num_street">Número: </label>
                                 <div class="col-md-4">
-                                    <input name="num_street" type="text" class="form-control" maxlength="4"/>
+                                    <input name="num_street" type="text" class="form-control" maxlength="4" />
                                 </div>
                             </div>
 
                             <div class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-2" for="colonia">Colonia: </label>
                                 <div class="col-md-10 col-12">
-                                    <input name="colonia" type="text" class="form-control" maxlength="60"/>
+                                    <input name="colonia" type="text" class="form-control" maxlength="60" />
                                 </div>
                             </div>
 
                             <div class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-2" for="postal_code">Codigo postal: </label>
                                 <div class="col-md-4">
-                                    <input name="postal_code" type="text" class="form-control" maxlength="5"/>
+                                    <input name="postal_code" type="text" class="form-control" maxlength="5" />
                                 </div>
 
 
                                 <label class="form-label col-sm-2" for="phone_number">Telefono o celular: </label>
                                 <div class="col-md-4">
-                                    <input name="phone_number" type="text" class="form-control" maxlength="10"/>
+                                    <input name="phone_number" type="text" class="form-control" maxlength="10" />
                                 </div>
                             </div>
 
                             <div class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-2" for="email">Correo electronico: </label>
                                 <div class="col-md-10">
-                                    <input name="email" type="email" class="form-control" maxlength="50"/>
+                                    <input name="email" type="email" class="form-control" maxlength="50" />
                                 </div>
                             </div>
                         </fieldset>
@@ -134,14 +134,14 @@
                             <div id="school_name" class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-3" for="school">Nombre de la escuela: </label>
                                 <div class="col-md-9">
-                                    <input name="school" type="text" class="form-control" maxlength="30"/>
+                                    <input name="school" type="text" class="form-control" maxlength="30" />
                                 </div>
                             </div>
 
                             <div class="mb-2 mx-2 row">
                                 <label class="col-form-label col-sm-3" for="score">Promedio: </label>
                                 <div class="col-md-2">
-                                    <input name="score" type="text" class="form-control" maxlength="5"/>
+                                    <input name="score" type="text" class="form-control" maxlength="5" />
                                 </div>
                                 <label class="col-form-label col-sm-3" for="option">Número de opción de ESCOM:</label>
                                 <div class="col-md-4">
@@ -270,7 +270,7 @@
                 </div>
                 <div class="card-footer ">
                     <input id="btnModify" type="button" class="btn btn-outline-danger m-3" value="Modificar" />
-                    <input type="button" class="btn btn-outline-primary m-3" value="Verificar" />
+                    <input id="btnVerify" type="button" class="btn btn-outline-primary m-3" value="Verificar" />
                 </div>
             </div>
         </div>
@@ -281,6 +281,7 @@
 <script type="text/javascript">
     $(function () {
         var page = 1
+        var user_data = {}
         $(".page-link").click((e) => {
             e.preventDefault()
             $("#form" + page).addClass("hide")
@@ -311,7 +312,7 @@
             $("#form-title").text(titles[pag - 1])
             $("#form-subtitle").text(subtitles[pag - 1])
         }
-        $.validator.addMethod("valueNotEquals", function(value, element, arg){
+        $.validator.addMethod("valueNotEquals", function (value, element, arg) {
             return arg !== value;
         }, "Value must not equal arg.");
 
@@ -331,21 +332,21 @@
             $("#verify-form").addClass("hide")
         })
         var states = [], schools = [];
-        $(document).ready(function() {
+        $(document).ready(function () {
             $.ajax({
                 url: "../models/State.php",
                 type: "GET",
-                data: {data: "get"},
-                success: function(response){
-                    response = response.split(",").filter((el)=>el!="");
-                    $.each(response, function(key, value){
+                data: { data: "get" },
+                success: function (response) {
+                    response = response.split(",").filter((el) => el != "");
+                    $.each(response, function (key, value) {
                         states.push(value);
-                        var option = new Option(value, key+1);
+                        var option = new Option(value, key + 1);
                         $(option).html(value);
                         $("select[name=state]").append(option);
                     });
                 },
-                error: function(response) {
+                error: function (response) {
                     console.log(response);
                 }
             });
@@ -353,68 +354,69 @@
             $.ajax({
                 url: "../models/School.php",
                 type: "GET",
-                data: {data: "get"},
-                success: function(response){
-                    response = response.split(",").filter((el)=>el!="");
-                    $.each(response, function(key, value){
+                data: { data: "get" },
+                success: function (response) {
+                    response = response.split(",").filter((el) => el != "");
+                    $.each(response, function (key, value) {
                         schools.push(value);
-                        var option = new Option(value, key+1);
+                        var option = new Option(value, key + 1);
                         $(option).html(value);
                         $("select[name=school_proc]").append(option);
                     });
                 },
-                error: function(response) {
+                error: function (response) {
                     console.log(response);
                 }
             });
         });
 
         $("#studentForm").submit((e) => {
+            e.preventDefault()
             if ($("#studentForm").valid()) {
                 $("#main-form").addClass("hide")
-                var content = {};
                 $.each($("#studentForm").serializeJSON(), function (key, value) {
-                    content[key] = value;
-                    if(key=="state"){
-                        $("label[name=state]").text(states[value-1]);
-                    } else if(key == "school_proc"){
-                        $("label[name=school_proc]").text(schools[value-1]);
-                    } else{
+                    user_data[key] = value;
+                    if (key == "state") {
+                        $("label[name=state]").text(states[value - 1]);
+                    } else if (key == "school_proc") {
+                        $("label[name=school_proc]").text(schools[value - 1]);
+                    } else {
                         $("label[name='" + key + "']").text(value);
                     }
                 });
-
-                $.ajax({
-                        url: "../models/User.php",
-                        data: {data: content},
-                        success: function(data){
-                            console.log(data)
-                            window.location.href = '/User';
-                        },
-                        error: function(data){
-                            alert("error")
-                        }
-                    })
                 $("#verify-form").removeClass("hide")
             }
-            e.preventDefault()
         })
+
+        $("#btnVerify").click(() => {
+            $.ajax({
+                url: "../models/User.php",
+                data: { data: user_data },
+                success: function (data) {
+                    window.location.href = "/User/verified"
+                },
+                error: function (data) {
+                    alert("error")
+                }
+            })
+        })
+
         var d = new Date();
-        var y = (d.getFullYear()-17).toString();
-        var m = (d.getMonth()+1).toString();
+        var y = (d.getFullYear() - 17).toString();
+        var m = (d.getMonth() + 1).toString();
         var day = d.getDate().toString();
-        var strDate = y + "-" + (m[1]?m:"0"+m) + "-" + (day[1]?day:"0"+day);
+        var strDate = y + "-" + (m[1] ? m : "0" + m) + "-" + (day[1] ? day : "0" + day);
         $("#studentForm").validate({
             rules: {
-                birth:{
+                birth: {
                     required: true,
                     max: strDate
                 },
                 school_proc: {
-                    valueNotEquals:"--Seleccionar--"
+                    valueNotEquals: "--Seleccionar--"
                 },
                 state: {
-                    valueNotEquals:"--Seleccionar--"
+                    valueNotEquals: "--Seleccionar--"
                 },
                 boleta: {
                     required: true,
@@ -496,15 +498,15 @@
                 }
             },
             messages: {
-                birth:{
-                    required:"Elige una fecha valida",
+                birth: {
+                    required: "Elige una fecha valida",
                     max: "Elige una fecha anterior"
                 },
                 school_proc: {
-                    valueNotEquals:"Elige una opción valida"
+                    valueNotEquals: "Elige una opción valida"
                 },
                 state: {
-                    valueNotEquals:"Elige una opción valida"
+                    valueNotEquals: "Elige una opción valida"
                 },
                 boleta: {
                     required: "Ingresa tu boleta por favor",

@@ -31,7 +31,7 @@ class User
                 header('location: /');
             }
         }
-        $user = (array) $this->db->queryOne("SELECT boleta AS 'Numero de Boleta', Alumno.nombre AS 'Nombre', apPat AS 'Apellido Paterno', apMat AS 'Apellido Materno', telefono AS 'Telefono', correoE AS 'Correo Electronico', genero AS 'Genero', horario AS 'Horario', CatalogoDeEscuelas.nombre AS 'Escuela', promedio AS 'Promedio', opcionESCOM AS'Opcion ESCOM', calle AS 'Calle', colonia AS 'Colonia', numero AS 'Numero', codigoP AS 'CP', EntidadFederativa.nombre AS 'Entidad Federativa', fechNac AS 'Fecha de nacimiento', nombreEscuela AS 'Nombre Escuela', verificado AS 'Verificado' FROM Alumno INNER JOIN EntidadFederativa ON Alumno.idEntFed = EntidadFederativa.idEntFed LEFT JOIN CatalogoDeEscuelas ON Alumno.idEscuela = CatalogoDeEscuelas.idEscuela WHERE boleta = '" . $_SESSION['idUsuario'] . "'");
+        $user = (array) $this->db->queryOne("SELECT boleta AS 'Numero de Boleta', Alumno.nombre AS 'Nombre', apPat AS 'Apellido Paterno', apMat AS 'Apellido Materno', telefono AS 'Telefono', correoE AS 'Correo Electronico', genero AS 'Genero', grupo AS 'Grupo', CatalogoDeEscuelas.nombre AS 'Escuela', promedio AS 'Promedio', opcionESCOM AS'Opcion ESCOM', calle AS 'Calle', colonia AS 'Colonia', numero AS 'Numero', codigoP AS 'CP', EntidadFederativa.nombre AS 'Entidad Federativa', fechNac AS 'Fecha de nacimiento', nombreEscuela AS 'Nombre Escuela', verificado AS 'Verificado' FROM Alumno INNER JOIN EntidadFederativa ON Alumno.idEntFed = EntidadFederativa.idEntFed LEFT JOIN CatalogoDeEscuelas ON Alumno.idEscuela = CatalogoDeEscuelas.idEscuela WHERE boleta = '" . $_SESSION['idUsuario'] . "'");
         if ($user == false) {
             header('location: /User/form');
         }
@@ -124,7 +124,7 @@ class User
         var_dump($data);
 
         $query = "INSERT INTO Alumno
-            (boleta, nombre, apPat, apMat, telefono, correoE, genero, idEscuela, promedio, opcionESCOM, calle, colonia, numero, codigoP, idEntFed, fechNac, nombreEscuela, verificado)
+            (boleta, nombre, apPat, apMat, telefono, correoE, genero, idEscuela, promedio, opcionESCOM, calle, colonia, numero, codigoP, idEntFed, fechNac, nombreEscuela, curp, verificado)
              VALUES (
                 '" . $data["boleta"] . "',
                 '" . $data["name"] . "',
@@ -143,6 +143,7 @@ class User
                 " . $data["state"] . ",
                 '" . $data["birth"] . "',
                 '" . $data["school"] . "',
+                '" . $data["curp"] . "',
                 1);";
         $this->db->executeQuery($query);
     }
