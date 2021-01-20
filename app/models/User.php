@@ -80,7 +80,8 @@ class User
                     ]),
                     new Template("views/components/cards/home_card.html", [
                         "col_size" => "12",
-                        "title" => "Recursos estudiantiles"
+                        "title" => "Recursos estudiantiles",
+                        "child" => new Template("views/components/display/student_resources.html", [])
                     ])
                 )
             ])
@@ -127,18 +128,18 @@ class User
         }
     }
 
-    public function read($id) 
+    public function read($id)
     {
         $boleta = $_SESSION["idUsuario"];
-        $query = "SELECT * FROM Alumno WHERE boleta='".$boleta."';";
+        $query = "SELECT * FROM Alumno WHERE boleta='" . $boleta . "';";
         $result = $this->db->executeQuery($query);
         if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-              echo $row["boleta"].",".$row["nombre"].",".$row["apPat"].",".$row["apMat"].",".$row["correoE"].",".$row["telefono"].",".$row["fechNac"].",".$row["genero"].",".$row["curp"].",".$row["grupo"].",".$row["idEscuela"].",".$row["promedio"].",".$row["opcionESCOM"].",".$row["calle"].",".$row["colonia"].",".$row["numero"].",".$row["codigoP"].",".$row["idEntFed"].",".$row["fechNac"].",".$row["nombreEscuela"];
+            while ($row = $result->fetch_assoc()) {
+                echo $row["boleta"] . "," . $row["nombre"] . "," . $row["apPat"] . "," . $row["apMat"] . "," . $row["correoE"] . "," . $row["telefono"] . "," . $row["fechNac"] . "," . $row["genero"] . "," . $row["curp"] . "," . $row["grupo"] . "," . $row["idEscuela"] . "," . $row["promedio"] . "," . $row["opcionESCOM"] . "," . $row["calle"] . "," . $row["colonia"] . "," . $row["numero"] . "," . $row["codigoP"] . "," . $row["idEntFed"] . "," . $row["fechNac"] . "," . $row["nombreEscuela"];
             }
-          } else {
+        } else {
             echo "0 results";
-          }
+        }
     }
 
     public function create($data)
@@ -200,7 +201,7 @@ if (isset($_REQUEST["data"])) {
     $user->create($_REQUEST["data"]);
 }
 
-if(isset($_REQUEST["get"])){
+if (isset($_REQUEST["get"])) {
     require_once("../controllers/db.class.php");
     session_start();
     $db = new DB();
