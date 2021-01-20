@@ -84,9 +84,9 @@ class Admin
                         "child" => new Template("views/components/tables/table.html", [
                             "title" => "Group",
                             "data" => $groups,
-                            "insertModal" => new Template("views/components/forms/Schedule/insert.html", []),
-                            "deleteModal" => new Template("views/components/forms/Schedule/delete.html", []),
-                            "updateModal" => new Template("views/components/forms/Schedule/update.html", []),
+                            "insertModal" => new Template("views/components/forms/Group/insert.html", []),
+                            "deleteModal" => new Template("views/components/forms/Group/delete.html", []),
+                            "updateModal" => new Template("views/components/forms/Group/update.html", []),
                         ])
                     ]),
                     new Template("views/components/cards/home_card.html", [
@@ -126,9 +126,15 @@ class Admin
         # code...
     }
 
-    public function create()
+    public function create($data)
     {
-        # code...
+        var_dump($data);
+        $query = "INSERT INTO Usuario VALUES ('".$data["claveTrabajo"]."', '".$data["claveTrabajo"]."', 1)";
+        $this->db->executeQuery($query);
+
+        $query = "INSERT INTO Administrador VALUES ('".$data["claveTrabajo"]."', '".$data["nombre"]."', '".$data["ApPatA"]."', '".$data["ApMatA"]."', '".$data["puesto"]."')";
+        $result = $this->db->executeQuery($query);
+        var_dump($result);
     }
 
     public function update($data)
@@ -156,4 +162,12 @@ if(isset($_REQUEST["update"])){
     $db = new DB();
     $admin = new Admin($db);
     $admin->update($_REQUEST["update"]);
+}
+
+if(isset($_REQUEST["post"])){
+    require_once("../controllers/db.class.php");
+    $db = new DB();
+    $admin = new Admin($db);
+    echo $_REQUEST["post"];
+    $admin->create($_REQUEST["post"]);
 }

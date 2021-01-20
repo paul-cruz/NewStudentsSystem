@@ -1,4 +1,4 @@
-<form id="updateStudentsForm" action="" method="post" class="w-90 form3 needs-validation">
+<form id="updateStudentForm" action="" method="post" class="w-90 form3 needs-validation">
     <fieldset class="border p-2">
         <legend class="w-auto">Estudiantes</legend>
         <div class="mx-2 mb-2 row">
@@ -24,17 +24,17 @@
 
 <script type="text/javascript">
     $("#btnBusStuUp").click(() =>{
-        if($("#updateStudentsForm").valid()){
+        if($("#updateStudentForm").valid()){
             $("#datosStuUp").removeClass("hide")
         }
     })
 
     $("#clrBusStuUp").click(() =>{
-        $("#updateStudentsForm").trigger("reset")
+        $("#updateStudentForm").trigger("reset")
         $("#datosStuUp").addClass("hide")
     })
 
-    $("#updateStudentsForm").validate({
+    $("#updateStudentForm").validate({
         rules: {
             boleta: {
                 required: true,

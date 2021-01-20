@@ -23,7 +23,9 @@ class Student {
 
     public function create($data)
     {
-        # code...
+        $query = "INSERT INTO Usuario VALUES ('".$data["boleta"]."', '".$data["clave"]."', 2)";
+        $result = $this->db->executeQuery($query);
+        var_dump($result);
     }
 
     public function update($data)
@@ -53,6 +55,13 @@ if(isset($_REQUEST["update"])){
     $db = new DB();
     $student = new Student($db);
     $student->update($_REQUEST["update"]);
+}
+
+if(isset($_REQUEST["post"])){
+    require_once("../controllers/db.class.php");
+    $db = new DB();
+    $student = new Student($db);
+    $student->create($_REQUEST["post"]);
 }
 
 ?>
