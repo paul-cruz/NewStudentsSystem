@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="row">
+    <div class="row" id="cudButtons<?= $title ?>">
         <div class="col-md-4">
             <input id="btnAdd" type="button" class="btn btn-outline-success m-3" value="Agregar" data-bs-toggle="modal"
                 data-bs-target="#insertModal<?= $title ?>" />
@@ -96,6 +96,9 @@
 
 <script type="text/javascript">
     $(function () {
+        if('<?= $title ?>'==="User"){
+            $("#cudButtons"+'<?= $title ?>').addClass("hide");
+        }
         var content = {};
         $("#btnCancelInsert" + '<?= $title ?>').click(() => {
             $("#insert" + '<?= $title ?>' + "Form").trigger("reset")
