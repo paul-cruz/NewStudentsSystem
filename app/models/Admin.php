@@ -24,6 +24,7 @@ class Admin
 
         $admins = array();
         $groups = array();
+        $inscritos = array();
         $students = array(); 
         
         $result = $this->db->executeQuery("SELECT * FROM Administrador");
@@ -39,6 +40,15 @@ class Admin
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $groups[] = ["Grupo"=>$row['idGrupo'], "Hora de exámen"=>$row["horaExamen"], "Alumnos inscritos"=>$row["inscritos"]];
+            }
+          } else {
+            echo "0 results";
+        }
+
+        $result = $this->db->executeQuery("SELECT * FROM Usuario WHERE rol = '2'");
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $inscritos[] = ["Boleta"=>$row['idUsuario']];
             }
           } else {
             echo "0 results";
@@ -84,7 +94,7 @@ class Admin
                         "title" => "Alumnos inscritos",
                         "child" => new Template("views/components/tables/table.html", [
                             "title" => "Students",
-                            "data" => $students,
+                            "data" => $inscritos,
                             "insertModal" => new Template("views/components/forms/Students/insert.html", []),
                             "deleteModal" => new Template("views/components/forms/Students/delete.html", []),
                             "updateModal" => new Template("views/components/forms/Students/update.html", []),
@@ -92,7 +102,14 @@ class Admin
                     ]),
                     new Template("views/components/cards/home_card.html", [
                         "col_size" => "12",
-                        "title" => "Alumnos registrados"
+                        "title" => "Alumnos registrados",
+                        "child" => new Template("views/components/tables/table.html", [
+                            "title" => "registered",
+                            "data" => $students,
+                            "insertModal" => new Template("views/components/forms/Students/insert.html", []),
+                            "deleteModal" => new Template("views/components/forms/Students/delete.html", []),
+                            "updateModal" => new Template("views/components/forms/Students/update.html", []),
+                        ])
                     ])
                 )
             ])
