@@ -138,14 +138,21 @@ class Admin
 
     public function delete($id)
     {
-        # code...
+        $query = "DELETE FROM Administrador WHERE numeroEmpleado = '".$id["claveTrabajo"]."'";
+        $this->db->executeQuery($query);
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'DELETE') { 
+if(isset($_REQUEST["delete"])){
     require_once("../controllers/db.class.php");
-    session_start();
     $db = new DB();
-    $admin = new User($db);
-    $admin->delete($_REQUEST["data"]);
+    $admin = new Admin($db);
+    $admin->delete($_REQUEST["delete"]);
+}
+
+if(isset($_REQUEST["update"])){
+    require_once("../controllers/db.class.php");
+    $db = new DB();
+    $admin = new Admin($db);
+    $admin->update($_REQUEST["update"]);
 }

@@ -96,7 +96,7 @@
 
 <script type="text/javascript">
     $(function () {
-
+        var content = {};
         $("#btnCancelInsert" + '<?= $title ?>').click(() => {
             $("#insert" + '<?= $title ?>' + "Form").trigger("reset")
         })
@@ -141,9 +141,9 @@
                 });
                 $.ajax({
                     url: "../../../models/" + '<?= $title ?>' + ".php",
-                    data: { data: user_data },
+                    data: { update: content },
                     success: function (data) {
-                        alert("Información guardada con exito")
+                        alert(data)
                     },
                     error: function (data) {
                         alert("error")
@@ -152,7 +152,6 @@
             }
         })
 
-        var content = {};
         $("#btnDelete" + '<?= $title ?>').click((e) => {
             console.log($("#delete" + '<?= $title ?>' + "Form").serializeJSON())
             if($("#delete"+'<?= $title ?>'+"Form").valid()){
