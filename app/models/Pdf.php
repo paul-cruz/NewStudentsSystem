@@ -22,7 +22,6 @@ class Pdf
             $user["Escuela"] = $user["Nombre Escuela"];
         }
 
-        $currentsite = getcwd();
         $template = "<!doctype html>".
         "<html lang='es'>".
         "    <head>".
@@ -161,8 +160,6 @@ class Pdf
                 "Attachment" => true //Para realizar la descarga
             )
         );
-
-        //header('location: /User');
 
     }
 }
