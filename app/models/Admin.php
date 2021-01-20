@@ -82,7 +82,7 @@ class Admin
                         "col_size" => "4",
                         "title" => "Horarios de Examen",
                         "child" => new Template("views/components/tables/table.html", [
-                            "title" => "Schedule",
+                            "title" => "Group",
                             "data" => $groups,
                             "insertModal" => new Template("views/components/forms/Schedule/insert.html", []),
                             "deleteModal" => new Template("views/components/forms/Schedule/delete.html", []),
@@ -93,7 +93,7 @@ class Admin
                         "col_size" => "4",
                         "title" => "Alumnos inscritos",
                         "child" => new Template("views/components/tables/table.html", [
-                            "title" => "Students",
+                            "title" => "Student",
                             "data" => $inscritos,
                             "insertModal" => new Template("views/components/forms/Students/insert.html", []),
                             "deleteModal" => new Template("views/components/forms/Students/delete.html", []),
@@ -102,7 +102,7 @@ class Admin
                     ]),
                     new Template("views/components/cards/home_card.html", [
                         "col_size" => "12",
-                        "title" => "Alumnos registrados",
+                        "title" => "User",
                         "child" => new Template("views/components/tables/table.html", [
                             "title" => "registered",
                             "data" => $students,
@@ -131,9 +131,10 @@ class Admin
         # code...
     }
 
-    public function update($id)
+    public function update($data)
     {
-        # code...
+        $query = "UPDATE Administrador SET nombre = '".$data["nombre"]."', apPat = '".$data["ApPatA"]."', apMat = '".$data["ApMatA"]."', puesto = '".$data["puesto"]."' WHERE numeroEmpleado = '".$data["claveTrabajo"]."'"; 
+        $result = $this->db->executeQuery($query);
     }
 
     public function delete($id)
