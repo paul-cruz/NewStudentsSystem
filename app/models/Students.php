@@ -26,9 +26,10 @@ class Student {
         # code...
     }
 
-    public function update($id)
+    public function update($data)
     {
-        # code...
+        $query = "UPDATE Usuario SET clave = '".$data["clave"]."' WHERE idUsuario = '".$data["boleta"]."'";
+        $result = $this->db->executeQuery($query);
     }
 
     public function delete($data)
@@ -46,4 +47,12 @@ if(isset($_REQUEST["delete"])){
     $student = new Student($db);
     $student->delete($_REQUEST["delete"]);
 }
+
+if(isset($_REQUEST["update"])){
+    require_once("../controllers/db.class.php");
+    $db = new DB();
+    $student = new Student($db);
+    $student->update($_REQUEST["update"]);
+}
+
 ?>
