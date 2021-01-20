@@ -101,12 +101,18 @@ class User
 
         switch ($arg) {
             case "form":
+                if ($_SESSION['verified'] == 1) {
+                    header('location: /User');
+                }
                 return [
                     "header" => new Template("views/components/headers/outter_header.html", []),
                     "child" => new Template("views/form.html", [])
                 ];
                 break;
             case "verified":
+                if ($_SESSION['verified'] == 1) {
+                    header('location: /User');
+                }
                 return [
                     "header" => new Template("views/components/headers/outter_header.html", []),
                     "child" => new Template("views/verified.html", [])
@@ -151,6 +157,8 @@ class User
         $i = intval($group["inscritos"]) + 1;
         $query = "UPDATE Grupo SET inscritos = '" . $i . "' WHERE idGrupo = '" . $group["idGrupo"] . "'";
         $this->db->executeQuery($query);
+        session_start();
+        $_SESSION['verified'] = 1;
     }
 
     public function getGroup()
