@@ -113,7 +113,7 @@
             console.log($("#insert" + '<?= $title ?>' + "Form").serializeJSON())
             $("#insert" + '<?= $title ?>' + "Form").submit((e) => {
                 e.preventDefault();
-                if ($("#update" + '<?= $title ?>' + "Form").valid()) {
+                if ($("#insert" + '<?= $title ?>' + "Form").valid()) {
                     $.each($("#insert" + '<?= $title ?>' + "Form").serializeJSON(), function (key, value) {
                         content[key] = value;
                         $("label[name='" + key + "']").text(value);
@@ -135,7 +135,7 @@
         $("#btnUpdate" + '<?= $title ?>').click((e) => {
             console.log($("#update" + '<?= $title ?>' + "Form").serializeJSON())
             if ($("#update" + '<?= $title ?>' + "Form").valid()) {
-                $.each($("#insert" + '<?= $title ?>' + "Form").serializeJSON(), function (key, value) {
+                $.each($("#update" + '<?= $title ?>' + "Form").serializeJSON(), function (key, value) {
                     content[key] = value;
                     $("label[name='" + key + "']").text(value);
                 });
@@ -154,6 +154,22 @@
 
         $("#btnDelete" + '<?= $title ?>').click((e) => {
             console.log($("#delete" + '<?= $title ?>' + "Form").serializeJSON())
+            if($("#delete"+'<?= $title ?>'+"Form").valid()){
+                $.each($("#delete"+'<?= $title ?>'+"Form").serializeJSON(), function (key, value) {
+                    content[key] = value;
+                    $("label[name='" + key + "']").text(value);
+                });
+                $.ajax({
+                    url: "../../../models/"+'<?= $title ?>'+".php",
+                    data: { data: user_data },
+                    success: function (data) {
+                        alert("Información guardada con exito")
+                    },
+                    error: function (data) {
+                        alert("error")
+                    }
+                }) 
+            }
         })
     });
 

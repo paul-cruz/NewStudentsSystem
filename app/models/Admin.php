@@ -141,3 +141,11 @@ class Admin
         # code...
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') { 
+    require_once("../controllers/db.class.php");
+    session_start();
+    $db = new DB();
+    $admin = new User($db);
+    $admin->delete($_REQUEST["data"]);
+}
