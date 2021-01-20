@@ -46,7 +46,7 @@
             <div class="modal-footer">
                 <button id="btnCancelInsert<?= $title ?>" type="button" class="btn btn-secondary"
                     data-bs-dismiss="modal">Cancelar</button>
-                <button id="btnInsert<?= $title ?>" type="submit" class="btn btn-success">Agregar</button>
+                <button id="btnInsert<?= $title ?>" type="button" class="btn btn-success">Agregar</button>
             </div>
         </div>
     </div>
@@ -113,8 +113,6 @@
         })
 
         $("#btnInsert" + '<?= $title ?>').click((e) => {
-            console.log($("#insert" + '<?= $title ?>' + "Form").serializeJSON())
-            $("#insert" + '<?= $title ?>' + "Form").submit((e) => {
                 e.preventDefault();
                 if ($("#insert" + '<?= $title ?>' + "Form").valid()) {
                     $.each($("#insert" + '<?= $title ?>' + "Form").serializeJSON(), function (key, value) {
@@ -123,16 +121,18 @@
                     });
                     $.ajax({
                         url: "../../../models/" + '<?= $title ?>' + ".php",
-                        data: { data: user_data },
+                        data: { post: content },
                         success: function (data) {
-                            alert("Información guardada con exito")
+                            console.log(data);
+                            location.reload();
                         },
                         error: function (data) {
                             alert("error")
                         }
                     })
+                } else {
+                    console.log("no valido")
                 }
-            })
         })
 
         $("#btnUpdate" + '<?= $title ?>').click((e) => {
@@ -146,7 +146,8 @@
                     url: "../../../models/" + '<?= $title ?>' + ".php",
                     data: { update: content },
                     success: function (data) {
-                        alert(data)
+                        console.log(data)
+                        location.reload();
                     },
                     error: function (data) {
                         alert("error")
@@ -167,6 +168,7 @@
                     data: { delete: content },
                     success: function (data) {
                         console.log(data);
+                        location.reload();
                     },
                     error: function (data) {
                         alert("error")
