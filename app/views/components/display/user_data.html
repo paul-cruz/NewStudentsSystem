@@ -12,9 +12,15 @@
     </div>
 
     <script>
-        $("#btn-modificar").click(function (evt){
-            window.location.href = '/User/update';
-        });
+
+        $(function () {
+            $("#btn-modificar").click(function (evt) {
+                window.location.href = '/User/update';
+            });
+            $("#btn-download").click(() => {
+                window.location.href = "/Pdf"
+            })
+        })
     </script>
 
     <?php
