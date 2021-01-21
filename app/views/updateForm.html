@@ -376,13 +376,17 @@
                 
                 $.each($("#studentForm").serializeJSON(), function (key, value) {
                     content[key] = value;
-                    if(key=="state"){
-                        $("label[name=state]").text(states[value-1]);
-                    } else if(key == "school_proc"){
-                        $("label[name=school_proc]").text(schools[value-1]);
-                    } else{
+                    if (key == "state") {
+                        $("label[name=state]").text(states[value - 1]);
+                    } else if (key == "school_proc" && value != '') {
+                        $("label[name=school_proc]").text(schools[value - 1]);
+                    } else if (key == "school" && value) {
+                        $("label[name=school_proc]").text(value);
+                        content["school_proc"] = "";
+                    } else {
                         $("label[name='" + key + "']").text(value);
                     }
+                    content["boleta"] = '<?=$_SESSION["idUsuario"]?>';
                 });
 
                 $("#verify-form").removeClass("hide")
@@ -395,8 +399,7 @@
                 url: "../models/User.php",
                 data: {update: content},
                 success: function(data){
-                    console.log(data)
-                    window.location.href = "/User"
+                    window.location.href = "/User/verified"
                 },
                 error: function(data){
                     alert("error")

@@ -15,7 +15,8 @@
                             <div class="mx-2 mb-2 row">
                                 <label for="txtBoleta" class="col-sm-2 col-form-label">No. Boleta:</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="txtBoleta" name="boleta" maxlength="10">
+                                    <input type="text" class="form-control" id="txtBoleta" name="boleta" maxlength="10"
+                                        disabled>
                                 </div>
                                 <label for="txtName" class="col-sm-2 col-form-label">Nombre(s):</label>
                                 <div class="col-sm-4">
@@ -151,18 +152,18 @@
                                         <label class="form-check-label" for="inlineRadio1">Primera</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="ESCOMopt"
-                                            id="inlineRadio2" value="2">
+                                        <input class="form-check-input" type="radio" name="ESCOMopt" id="inlineRadio2"
+                                            value="2">
                                         <label class="form-check-label" for="inlineRadio2">Segunda</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="ESCOMopt"
-                                            id="inlineRadio3" value="3">
+                                        <input class="form-check-input" type="radio" name="ESCOMopt" id="inlineRadio3"
+                                            value="3">
                                         <label class="form-check-label" for="inlineRadio3">Tercera</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="ESCOMopt"
-                                            id="inlineRadio4" value="4">
+                                        <input class="form-check-input" type="radio" name="ESCOMopt" id="inlineRadio4"
+                                            value="4">
                                         <label class="form-check-label" for="inlineRadio4">Cuarta</label>
                                     </div>
                                 </div>
@@ -280,6 +281,7 @@
 
 <script type="text/javascript">
     $(function () {
+        $("#txtBoleta").val('<?=$_SESSION["idUsuario"]?>');
         var page = 1
         var user_data = {}
         $(".page-link").click((e) => {
@@ -378,12 +380,17 @@
                     user_data[key] = value;
                     if (key == "state") {
                         $("label[name=state]").text(states[value - 1]);
-                    } else if (key == "school_proc") {
+                    } else if (key == "school_proc" && value != '') {
                         $("label[name=school_proc]").text(schools[value - 1]);
+                    } else if (key == "school" && value) {
+                        $("label[name=school_proc]").text(value);
+                        user_data["school_proc"] = "";
                     } else {
                         $("label[name='" + key + "']").text(value);
                     }
+                    user_data["boleta"] = '<?=$_SESSION["idUsuario"]?>';
                 });
+                console.log(user_data)
                 $("#verify-form").removeClass("hide")
             }
         })
@@ -420,7 +427,7 @@
                 },
                 boleta: {
                     required: true,
-                    pattern: /(P)+([P,E])+([0–9]{8})/,
+                    pattern: /(P)+([P,E])+([0-9]{8})/,
                     minlength: 10,
                     maxlength: 10
                 },

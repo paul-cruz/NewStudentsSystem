@@ -111,9 +111,6 @@ class User
                 ];
                 break;
             case "verified":
-                if ($_SESSION['verified'] == 1) {
-                    header('location: /User');
-                }
                 return [
                     "header" => new Template("views/components/headers/outter_header.html", []),
                     "child" => new Template("views/verified.html", [])
@@ -146,7 +143,7 @@ class User
     {
         var_dump($data);
         $group = $this->getGroup();
-        $query = "INSERT INTO Alumno
+        $query = $data["school_proc"] != "" ? "INSERT INTO Alumno
             (boleta, nombre, apPat, apMat, telefono, correoE, genero, idEscuela, promedio, opcionESCOM, calle, colonia, numero, codigoP, idEntFed, fechNac, nombreEscuela, curp, grupo, verificado)
              VALUES (
                 '" . $data["boleta"] . "',
@@ -168,7 +165,28 @@ class User
                 '" . $data["school"] . "',
                 '" . $data["curp"] . "',
                 '" . $group["idGrupo"] . "',
-                1);";
+                1);" : "INSERT INTO Alumno
+                (boleta, nombre, apPat, apMat, telefono, correoE, genero, promedio, opcionESCOM, calle, colonia, numero, codigoP, idEntFed, fechNac, nombreEscuela, curp, grupo, verificado)
+                 VALUES (
+                    '" . $data["boleta"] . "',
+                    '" . $data["name"] . "',
+                    '" . $data["ApPat"] . "',
+                    '" . $data["ApMat"] . "',
+                    '" . $data["phone_number"] . "',
+                    '" . $data["email"] . "',
+                    '" . $data["sexo"] . "', 
+                    " . $data["score"] . ",
+                    " . $data["ESCOMopt"] . ",
+                    '" . $data["street"] . "',
+                    '" . $data["colonia"] . "',
+                    '" . $data["num_street"] . "',
+                    '" . $data["postal_code"] . "',
+                    " . $data["state"] . ",
+                    '" . $data["birth"] . "',
+                    '" . $data["school"] . "',
+                    '" . $data["curp"] . "',
+                    '" . $group["idGrupo"] . "',
+                    1);";
         $this->db->executeQuery($query);
         $i = intval($group["inscritos"]) + 1;
         $query = "UPDATE Grupo SET inscritos = '" . $i . "' WHERE idGrupo = '" . $group["idGrupo"] . "'";
@@ -185,7 +203,7 @@ class User
 
     public function update($data)
     {
-        $query = "UPDATE Alumno SET nombre = '" . $data["name"] . "', apPat = '" . $data["ApPat"] . "', apMat = '" . $data["ApMat"] . "', telefono = '" . $data["phone_number"] . "', correoE = '" . $data["email"] . "', genero = '" . $data["sexo"] . "', curp = '" . $data["curp"] . "', idEscuela = " . $data["school_proc"] . ", promedio = " . $data["score"] . ", opcionESCOM = " . $data["ESCOMopt"] . ", calle = '" . $data["street"] . "', colonia = '" . $data["colonia"] . "', numero = '" . $data["num_street"] . "', codigoP = '" . $data["postal_code"] . "', idEntFed = " . $data["state"] . ", fechNac = '" . $data["birth"] . "', nombreEscuela = '" . $data["school"] . "' WHERE boleta = '" . $data["boleta"] . "';";
+        $query = $data["school_proc"] != "" ? "UPDATE Alumno SET nombre = '" . $data["name"] . "', apPat = '" . $data["ApPat"] . "', apMat = '" . $data["ApMat"] . "', telefono = '" . $data["phone_number"] . "', correoE = '" . $data["email"] . "', genero = '" . $data["sexo"] . "', curp = '" . $data["curp"] . "', idEscuela = " . $data["school_proc"] . ", promedio = " . $data["score"] . ", opcionESCOM = " . $data["ESCOMopt"] . ", calle = '" . $data["street"] . "', colonia = '" . $data["colonia"] . "', numero = '" . $data["num_street"] . "', codigoP = '" . $data["postal_code"] . "', idEntFed = " . $data["state"] . ", fechNac = '" . $data["birth"] . "', nombreEscuela = '" . $data["school"] . "' WHERE boleta = '" . $data["boleta"] . "';" : "UPDATE Alumno SET nombre = '" . $data["name"] . "', apPat = '" . $data["ApPat"] . "', apMat = '" . $data["ApMat"] . "', telefono = '" . $data["phone_number"] . "', correoE = '" . $data["email"] . "', genero = '" . $data["sexo"] . "', curp = '" . $data["curp"] . "', promedio = " . $data["score"] . ", opcionESCOM = " . $data["ESCOMopt"] . ", calle = '" . $data["street"] . "', colonia = '" . $data["colonia"] . "', numero = '" . $data["num_street"] . "', codigoP = '" . $data["postal_code"] . "', idEntFed = " . $data["state"] . ", fechNac = '" . $data["birth"] . "', nombreEscuela = '" . $data["school"] . "' WHERE boleta = '" . $data["boleta"] . "';";
         $row = $this->db->executeQuery($query);
         return $row;
     }
