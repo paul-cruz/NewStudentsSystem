@@ -25,11 +25,33 @@
 </form>
 
 <script type="text/javascript">
-    $("#btnBusSchDel").click(() =>{
+    $(function(){
+        $("#btnBusSchDel").click(() =>{
         if($("#deleteGroupForm").valid()){
-            $("#datosSchDel").removeClass("hide")
+            var content = {};
+                $.each($("#deleteGroupForm").serializeJSON(), function (key, value) {
+                    content[key] = value;
+                    $("label[name='" + key + "']").text(value);
+                });
+                console.log(content);
+                $.ajax({
+                    url: "../../../../models/Group.php",
+                    data: { get: content },
+                    success: function(data){
+                        data = data.split(",");
+                        console.log(data);
+                        $("label[name=calHorDel]").text(data[1]);
+                        $("label[name=inscritosDel]").text(data[2]);
+                        $("#datosSchDel").removeClass("hide")
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                })
         }
     })
+    })
+    
 
     $("#clrBusSchDel").click(() =>{
         $("#deleteGroupForm").trigger("reset")

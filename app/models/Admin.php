@@ -123,7 +123,15 @@ class Admin
 
     public function read($id)
     {
-        # code...
+        $query = "SELECT * FROM Administrador WHERE numeroEmpleado='" . $id["claveTrabajo"] . "';";
+        $result = $this->db->executeQuery($query);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo $row["numeroEmpleado"] . "," . $row["nombre"] . "," . $row["apPat"] . "," . $row["apMat"] . "," . $row["puesto"];
+            }
+        } else {
+            echo "0 results";
+        }
     }
 
     public function create($data)
@@ -170,4 +178,11 @@ if(isset($_REQUEST["post"])){
     $admin = new Admin($db);
     echo $_REQUEST["post"];
     $admin->create($_REQUEST["post"]);
+}
+
+if (isset($_REQUEST["get"])) {
+    require_once("../controllers/db.class.php");
+    $db = new DB();
+    $admin = new Admin($db);
+    $admin->read($_REQUEST["get"]);
 }

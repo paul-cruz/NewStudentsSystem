@@ -25,11 +25,31 @@
 </form>
 
 <script type="text/javascript">
-    $("#btnBusStuDel").click(() =>{
-        if($("#deleteStudentForm").valid()){
-            $("#datosStuDel").removeClass("hide")
-        }
+    $(function(){
+        $("#btnBusStuDel").click(() =>{
+            if($("#deleteStudentForm").valid()){
+                var content = {};
+                $.each($("#deleteStudentForm").serializeJSON(), function (key, value) {
+                    content[key] = value;
+                    $("label[name='" + key + "']").text(value);
+                });
+                $.ajax({
+                    url: "../../../../models/Student.php",
+                    data: { get: content },
+                    success: function(data){
+                        data = data.split(",");
+                        $("label[name=Boleta]").text(data[0]);
+                        $("label[name=clave]").text(data[1]);
+                        $("#datosStuDel").removeClass("hide")
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                })
+            }
+        })
     })
+    
 
     $("#clrBusStuDel").click(() =>{
         $("#deleteStudentForm").trigger("reset")

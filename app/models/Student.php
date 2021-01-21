@@ -16,9 +16,17 @@ class Student {
         $this->db = $db;
     }
 
-    public function read()
+    public function read($id)
     {
-        
+        $query = "SELECT * FROM Usuario WHERE idUsuario='" . $id["boleta"] . "';";
+        $result = $this->db->executeQuery($query);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo $row["idUsuario"] . "," . $row["clave"] . "," . $row["rol"];
+            }
+        } else {
+            echo "0 results";
+        }
     }
 
     public function create($data)
@@ -64,4 +72,10 @@ if(isset($_REQUEST["post"])){
     $student->create($_REQUEST["post"]);
 }
 
+if (isset($_REQUEST["get"])) {
+    require_once("../controllers/db.class.php");
+    $db = new DB();
+    $student = new Student($db);
+    $student->read($_REQUEST["get"]);
+}
 ?>

@@ -14,7 +14,7 @@
         <div id="datosAdDel" class="hide">
             <div class="mx-2 mb-2 row">
                 <label class="col-form-label col-sm-5 col-6"><strong>Clave de Trabajo:</strong></label>
-                <label class="col-form-label col-sm-7 col-6" name="claveTrabajo">"Clave de Trabajo"</label>
+                <label class="col-form-label col-sm-7 col-6" name="claveTrabajoOut"></label>
             </div>
             <div class="mx-2 mb-2 row">
                 <label class="col-form-label col-sm-5 col-6"><strong>Nombre(s):</strong></label>
@@ -37,10 +37,32 @@
 </form>
 
 <script type="text/javascript">
-    $("#btnBusAdDel").click(() =>{
-        if($("#deleteAdminForm").valid()){
-            $("#datosAdDel").removeClass("hide")
-        }
+    $(function(){
+        $("#btnBusAdDel").click((e) =>{
+            if($("#deleteAdminForm").valid()){
+                var content = {};
+                $.each($("#deleteAdminForm").serializeJSON(), function (key, value) {
+                    content[key] = value;
+                    $("label[name='" + key + "']").text(value);
+                });
+                $.ajax({
+                    url: "../../../../models/Admin.php",
+                    data: { get: content },
+                    success: function(data){
+                        data = data.split(",");
+                        $("label[name=claveTrabajoOut]").text(data[0]);
+                        $("label[name=nombre]").text(data[1]);
+                        $("label[name=ApPatA]").text(data[2]);
+                        $("label[name=ApMatA]").text(data[3]);
+                        $("label[name=Puesto]").text(data[4]);
+                        $("#datosAdDel").removeClass("hide")
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                })
+            }
+        })
     })
 
     $("#clrBusAdDel").click(() =>{

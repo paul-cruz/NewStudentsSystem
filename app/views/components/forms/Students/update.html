@@ -23,11 +23,30 @@
 </form>
 
 <script type="text/javascript">
+$(function(){
     $("#btnBusStuUp").click(() =>{
         if($("#updateStudentForm").valid()){
-            $("#datosStuUp").removeClass("hide")
+            var content = {};
+                $.each($("#updateStudentForm").serializeJSON(), function (key, value) {
+                    content[key] = value;
+                    $("label[name='" + key + "']").text(value);
+                });
+                $.ajax({
+                    url: "../../../../models/Student.php",
+                    data: { get: content },
+                    success: function(data){
+                        data = data.split(",");
+                        $("input[name=clave]").val(data[1]);
+                        $("#datosStuUp").removeClass("hide")
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                })
         }
     })
+})
+    
 
     $("#clrBusStuUp").click(() =>{
         $("#updateStudentForm").trigger("reset")

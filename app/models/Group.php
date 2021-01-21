@@ -16,8 +16,17 @@ class Group {
         $this->db = $db;
     }
 
-    public function read()
+    public function read($id)
     {
+        $query = "SELECT * FROM Grupo WHERE idGrupo='" . $id["idGrupo"] . "';";
+        $result = $this->db->executeQuery($query);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo $row["idUsuario"] . "," . $row["horaExamen"] . "," . $row["inscritos"];
+            }
+        } else {
+            echo "0 results";
+        }
     }
 
     public function create($data)
@@ -42,13 +51,6 @@ class Group {
     }
 }
 
-if(isset($_REQUEST["data"])){
-    require_once("../controllers/db.class.php");
-    $db = new DB();
-    $group = new Group($db);
-    $group->read();
-}
-
 if(isset($_REQUEST["post"])){
     require_once("../controllers/db.class.php");
     $db = new DB();
@@ -70,5 +72,10 @@ if(isset($_REQUEST["delete"])){
     $group->delete($_REQUEST["delete"]);
 }
 
-
+if (isset($_REQUEST["get"])) {
+    require_once("../controllers/db.class.php");
+    $db = new DB();
+    $group = new Group($db);
+    $group->read($_REQUEST["get"]);
+}
 ?>

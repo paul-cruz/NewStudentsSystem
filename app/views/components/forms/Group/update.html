@@ -29,11 +29,32 @@
 </form>
 
 <script type="text/javascript">
-    $("#btnBusSchUp").click(() =>{
+    $(function(){
+        $("#btnBusSchUp").click(() =>{
         if($("#updateGroupForm").valid()){
-            $("#datosSchUp").removeClass("hide")
+            var content = {};
+                $.each($("#updateGroupForm").serializeJSON(), function (key, value) {
+                    content[key] = value;
+                    $("label[name='" + key + "']").text(value);
+                });
+                $.ajax({
+                    url: "../../../../models/Group.php",
+                    data: { get: content },
+                    success: function(data){
+                        data = data.split(",");
+                        console.log(data);
+                        $("input[name=horarioUp]").val(data[1]);
+                        $("input[name=inscritos]").val(data[2]);
+                        $("#datosSchUp").removeClass("hide")
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                })
         }
+    })    
     })
+    
 
     $("#clrBusSchUp").click(() =>{
         $("#updateGroupForm").trigger("reset")

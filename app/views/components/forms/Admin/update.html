@@ -41,10 +41,31 @@
 </form>
 
 <script type="text/javascript">
-    $("#btnBusAdUp").click(() =>{
-        if($("#updateAdminForm").valid()){
-            $("#datosAdUp").removeClass("hide")
-        }
+    $(function(){
+        $("#btnBusAdUp").click(() =>{
+            if($("#updateAdminForm").valid()){
+                var content = {};
+                $.each($("#updateAdminForm").serializeJSON(), function (key, value) {
+                    content[key] = value;
+                    $("label[name='" + key + "']").text(value);
+                });
+                $.ajax({
+                    url: "../../../../models/Admin.php",
+                    data: { get: content },
+                    success: function(data){
+                        data = data.split(",");
+                        $("input[name=nombre]").val(data[1]);
+                        $("input[name=ApPatA]").val(data[2]);
+                        $("input[name=ApMatA]").val(data[3]);
+                        $("input[name=puesto]").val(data[4]);
+                        $("#datosAdUp").removeClass("hide")
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                })
+            }
+        })
     })
 
     $("#clrBusAdUp").click(() =>{
