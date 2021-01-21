@@ -60,7 +60,8 @@ http://your-server-ip-address:8080/
 _The following points are to deploy the system in [GCP](https://console.cloud.google.com/)_
 
 **Setting up the virtual machine**
-Create a new Compute Engine instance using the Container-Optimized OS stable image:
+
+_Create a new Compute Engine instance using the Container-Optimized OS stable image:_
 
 1. [Open the Cloud Console](https://console.cloud.google.com/).
 2. [Create a new Compute Engine instance](https://console.cloud.google.com/compute/instancesAdd).
@@ -71,6 +72,7 @@ Create a new Compute Engine instance using the Container-Optimized OS stable ima
 7. Click the **Create button** to create the Compute Engine instance.
 
 **Setting up the docker-compose image**
+
 _The general instructions for installing Docker Compose will not work because very few parts of the filesystem are mounted as executable. Instead, you can run Docker Compose image._
 
 _Download and run the Docker Compose image._
