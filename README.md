@@ -40,7 +40,7 @@ http://localhost:5000/
 
 _For external server environment_
 ```
-http://your-ip-addres:5000/
+http://your-server-ip-addres:5000/
 ```
 _Once there you have to create a DB named **students_system** and run the [students_system.sql](https://github.com/paul-cruz/NewStudentsSystem/blob/main/db/students_system.sql)_
 
@@ -53,8 +53,45 @@ http://localhost:8080/
 
 _For external server environment_
 ```
-http://your-ip-addres:8080/
+http://your-server-ip-addres:8080/
 ```
+
+## Optional Steps 🔧
+_The following points are to deploy the system in [GCP](https://console.cloud.google.com/)_
+
+**Setting up the virtual machine**
+Create a new Compute Engine instance using the Container-Optimized OS stable image:
+
+1. [Open the Cloud Console](https://console.cloud.google.com/).
+2. [Create a new Compute Engine instance](https://console.cloud.google.com/compute/instancesAdd).
+3. Select the desired **Zone**, such as "us-central1-f".
+4. Select the desired **Machine type**, such as "micro" (f1-micro).
+5. Change the **Boot disk** to "Container-Optimized OS stable".
+6. Check the box to **allow HTTP traffic** in the Firewall section.
+7. Click the **Create button** to create the Compute Engine instance.
+
+**Setting up the docker-compose image**
+_The general instructions for installing Docker Compose will not work because very few parts of the filesystem are mounted as executable. Instead, you can run Docker Compose image._
+
+_Download and run the Docker Compose image._
+```
+$ docker run docker/compose:1.24.0 version
+```
+_Add a docker-compose alias to your shell configuration file, e.g. .bashrc._
+```
+$ echo alias docker-compose="'"'docker run --rm \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v "$PWD:$PWD" \
+    -w="$PWD" \
+    docker/compose:1.24.0'"'" >> ~/.bashrc
+```
+
+_Reload the Bash configuration._
+```
+$ source ~/.bashrc
+```
+
+_Finally follow the **Getting Started** instructions_
 
 ## Licencia 📄
 
