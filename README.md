@@ -91,8 +91,9 @@ _Reload the Bash configuration._
 $ source ~/.bashrc
 ```
 
-**Setting up the firewall rul**
-Create a new Firewall rule:
+**Setting up the firewall rule**
+
+_Create a new Firewall rule:_
 
 1. [Open the Cloud Console](https://console.cloud.google.com/).
 2. [Create a new Firewall Rule](https://console.cloud.google.com/networking/firewalls/add).
