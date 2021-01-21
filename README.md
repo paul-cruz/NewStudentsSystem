@@ -40,7 +40,7 @@ http://localhost:5000/
 
 _For external server environment_
 ```
-http://your-server-ip-addres:5000/
+http://your-server-ip-address:5000/
 ```
 _Once there you have to create a DB named **students_system** and run the [students_system.sql](https://github.com/paul-cruz/NewStudentsSystem/blob/main/db/students_system.sql)_
 
@@ -53,7 +53,7 @@ http://localhost:8080/
 
 _For external server environment_
 ```
-http://your-server-ip-addres:8080/
+http://your-server-ip-address:8080/
 ```
 
 ## Optional Steps 🔧
