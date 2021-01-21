@@ -100,8 +100,9 @@ _Create a new Firewall rule:_
 1. [Open the Cloud Console](https://console.cloud.google.com/).
 2. [Create a new Firewall Rule](https://console.cloud.google.com/networking/firewalls/add).
 3. Select the desired **Name**, such as "my-firewall-rule".
-4. Change the **Protocol**, to "tcp".
-5. Select the desired **Ports**, such as "8080,5000".
+4. Enter the desired *IP ranges**, such as "0.0.0.0/0"
+5. Change the **Protocol**, to "tcp".
+6. Select the desired **Ports**, such as "8080,5000".
 
 _Finally follow the **Getting Started** instructions_
 
