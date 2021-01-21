@@ -64,8 +64,8 @@ Create a new Compute Engine instance using the Container-Optimized OS stable ima
 
 1. [Open the Cloud Console](https://console.cloud.google.com/).
 2. [Create a new Compute Engine instance](https://console.cloud.google.com/compute/instancesAdd).
-3. Select the desired **Zone**, such as "us-central1-f".
-4. Select the desired **Machine type**, such as "micro" (f1-micro).
+3. Select the desired **Zone**, such as "us-central1-a".
+4. Select the desired **Machine type**, such as "standar" (n1-standard-1).
 5. Change the **Boot disk** to "Container-Optimized OS stable".
 6. Check the box to **allow HTTP traffic** in the Firewall section.
 7. Click the **Create button** to create the Compute Engine instance.
@@ -90,6 +90,15 @@ _Reload the Bash configuration._
 ```
 $ source ~/.bashrc
 ```
+
+**Setting up the firewall rul**
+Create a new Firewall rule:
+
+1. [Open the Cloud Console](https://console.cloud.google.com/).
+2. [Create a new Firewall Rule](https://console.cloud.google.com/networking/firewalls/add).
+3. Select the desired **Name**, such as "my-firewall-rule".
+4. Change the **Protocol**, to "tcp".
+5. Select the desired **Ports**, such as "8080,5000".
 
 _Finally follow the **Getting Started** instructions_
 
