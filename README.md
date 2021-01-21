@@ -1,4 +1,4 @@
-# New Studnets System
+# New Students System
 The following project its a web based one, using technologies as HTML5, CSS3, jQuery, Bootstrap, MySQL and PHP.
 
 It is used to emulate the sign up new students in [ESCOM IPN](https://www.escom.ipn.mx/), which asks for the basic students info and assign a evaluation time and group, this evaluation is an ESCOM internal proccess so we don't own the logic neither resources like photos, links, etc.
