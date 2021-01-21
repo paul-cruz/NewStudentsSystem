@@ -14,7 +14,8 @@
                             <div class="mx-2 mb-2 row">
                                 <label for="txtBoleta" class="col-sm-2 col-form-label">No. Boleta:</label>
                                 <div class="col-sm-4">
-                                    <input type="text" readonly="readonly" class="form-control" id="txtBoleta" name="boleta"  maxlength="10">
+                                    <input type="text" readonly="readonly" class="form-control" id="txtBoleta"
+                                        name="boleta" maxlength="10" disabled>
                                 </div>
                                 <label for="txtName" class="col-sm-2 col-form-label">Nombre(s):</label>
                                 <div class="col-sm-4">
@@ -66,38 +67,38 @@
                             <div class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-2" for="street">Calle: </label>
                                 <div class="col-md-4">
-                                    <input name="street" type="text" class="form-control" maxlength="20"/>
+                                    <input name="street" type="text" class="form-control" maxlength="20" />
                                 </div>
                                 <label class="col-form-label col-sm-2 " for="num_street">Número: </label>
                                 <div class="col-md-4">
-                                    <input name="num_street" type="text" class="form-control" maxlength="4"/>
+                                    <input name="num_street" type="text" class="form-control" maxlength="4" />
                                 </div>
                             </div>
 
                             <div class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-2" for="colonia">Colonia: </label>
                                 <div class="col-md-10 col-12">
-                                    <input name="colonia" type="text" class="form-control" maxlength="60"/>
+                                    <input name="colonia" type="text" class="form-control" maxlength="60" />
                                 </div>
                             </div>
 
                             <div class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-2" for="postal_code">Codigo postal: </label>
                                 <div class="col-md-4">
-                                    <input name="postal_code" type="text" class="form-control" maxlength="5"/>
+                                    <input name="postal_code" type="text" class="form-control" maxlength="5" />
                                 </div>
 
 
                                 <label class="form-label col-sm-2" for="phone_number">Telefono o celular: </label>
                                 <div class="col-md-4">
-                                    <input name="phone_number" type="text" class="form-control" maxlength="10"/>
+                                    <input name="phone_number" type="text" class="form-control" maxlength="10" />
                                 </div>
                             </div>
 
                             <div class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-2" for="email">Correo electronico: </label>
                                 <div class="col-md-10">
-                                    <input name="email" type="email" class="form-control" maxlength="50"/>
+                                    <input name="email" type="email" class="form-control" maxlength="50" />
                                 </div>
                             </div>
                         </fieldset>
@@ -133,14 +134,14 @@
                             <div id="school_name" class="mx-2 mb-2 row">
                                 <label class="col-form-label col-sm-3" for="school">Nombre de la escuela: </label>
                                 <div class="col-md-9">
-                                    <input name="school" type="text" class="form-control" maxlength="30"/>
+                                    <input name="school" type="text" class="form-control" maxlength="30" />
                                 </div>
                             </div>
 
                             <div class="mb-2 mx-2 row">
                                 <label class="col-form-label col-sm-3" for="score">Promedio: </label>
                                 <div class="col-md-2">
-                                    <input name="score" type="text" class="form-control" maxlength="5"/>
+                                    <input name="score" type="text" class="form-control" maxlength="5" />
                                 </div>
                                 <label class="col-form-label col-sm-3" for="option">Número de opción de ESCOM:</label>
                                 <div class="col-md-4">
@@ -150,18 +151,18 @@
                                         <label class="form-check-label" for="inlineRadio1">Primera</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="ESCOMopt"
-                                            id="inlineRadio2" value="2">
+                                        <input class="form-check-input" type="radio" name="ESCOMopt" id="inlineRadio2"
+                                            value="2">
                                         <label class="form-check-label" for="inlineRadio2">Segunda</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="ESCOMopt"
-                                            id="inlineRadio3" value="3">
+                                        <input class="form-check-input" type="radio" name="ESCOMopt" id="inlineRadio3"
+                                            value="3">
                                         <label class="form-check-label" for="inlineRadio3">Tercera</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="ESCOMopt"
-                                            id="inlineRadio4" value="4">
+                                        <input class="form-check-input" type="radio" name="ESCOMopt" id="inlineRadio4"
+                                            value="4">
                                         <label class="form-check-label" for="inlineRadio4">Cuarta</label>
                                     </div>
                                 </div>
@@ -269,7 +270,7 @@
                 </div>
                 <div class="card-footer ">
                     <input id="btnModify" type="button" class="btn btn-outline-danger m-3" value="Modificar" />
-                    <input type="button"  id="btnUpdate" class="btn btn-outline-primary m-3" value="Verificar" />
+                    <input type="button" id="btnUpdate" class="btn btn-outline-primary m-3" value="Verificar" />
                 </div>
             </div>
         </div>
@@ -311,7 +312,7 @@
             $("#form-subtitle").text(subtitles[pag - 1])
         }
 
-        $.validator.addMethod("valueNotEquals", function(value, element, arg){
+        $.validator.addMethod("valueNotEquals", function (value, element, arg) {
             return arg !== value;
         }, "Value must not equal arg.");
 
@@ -332,21 +333,21 @@
         })
 
         var states = [], schools = [];
-        $(document).ready(function() {
+        $(document).ready(function () {
             $.ajax({
                 url: "../models/State.php",
                 type: "GET",
-                data: {data: "get"},
-                success: function(response){
-                    response = response.split(",").filter((el)=>el!="");
-                    $.each(response, function(key, value){
+                data: { data: "get" },
+                success: function (response) {
+                    response = response.split(",").filter((el) => el != "");
+                    $.each(response, function (key, value) {
                         states.push(value);
-                        var option = new Option(value, key+1);
+                        var option = new Option(value, key + 1);
                         $(option).html(value);
                         $("select[name=state]").append(option);
                     });
                 },
-                error: function(response) {
+                error: function (response) {
                     console.log(response);
                 }
             });
@@ -354,17 +355,17 @@
             $.ajax({
                 url: "../models/School.php",
                 type: "GET",
-                data: {data: "get"},
-                success: function(response){
-                    response = response.split(",").filter((el)=>el!="");
-                    $.each(response, function(key, value){
+                data: { data: "get" },
+                success: function (response) {
+                    response = response.split(",").filter((el) => el != "");
+                    $.each(response, function (key, value) {
                         schools.push(value);
-                        var option = new Option(value, key+1);
+                        var option = new Option(value, key + 1);
                         $(option).html(value);
                         $("select[name=school_proc]").append(option);
                     });
                 },
-                error: function(response) {
+                error: function (response) {
                     console.log(response);
                 }
             });
@@ -373,9 +374,11 @@
         $("#studentForm").submit((e) => {
             if ($("#studentForm").valid()) {
                 $("#main-form").addClass("hide")
-                
+
                 $.each($("#studentForm").serializeJSON(), function (key, value) {
                     content[key] = value;
+                    content["boleta"] = "<?=$_SESSION['idUsuario']?>";
+                    $("label[name=boleta]").text(content["boleta"]);
                     if (key == "state") {
                         $("label[name=state]").text(states[value - 1]);
                     } else if (key == "school_proc" && value != '') {
@@ -386,7 +389,6 @@
                     } else {
                         $("label[name='" + key + "']").text(value);
                     }
-                    content["boleta"] = '<?=$_SESSION["idUsuario"]?>';
                 });
 
                 $("#verify-form").removeClass("hide")
@@ -394,32 +396,32 @@
             e.preventDefault()
         })
 
-        $("#btnUpdate").click(function(evt){
+        $("#btnUpdate").click(function (evt) {
             $.ajax({
                 url: "../models/User.php",
-                data: {update: content},
-                success: function(data){
+                data: { update: content },
+                success: function (data) {
                     window.location.href = "/User/verified"
                 },
-                error: function(data){
+                error: function (data) {
                     alert("error")
                 }
             })
         })
 
-        $(document).ready(function(){
+        $(document).ready(function () {
             $.ajax({
                 url: "../models/User.php",
-                data: {"get": "session"},
+                data: { "get": "session" },
                 type: "GET",
-                success: function(data){
+                success: function (data) {
                     data = data.split(",");
                     $("input[name=boleta]").val(data[0]);
                     $("input[name=name]").val(data[1]);
                     $("input[name=ApPat]").val(data[2]);
                     $("input[name=ApMat]").val(data[3]);
                     $("input[name=birth]").val(data[6]);
-                    data[7]=="M"?$("#chkSexM").prop("checked", true) : $("#chkSexF").prop("checked", true);
+                    data[7] == "M" ? $("#chkSexM").prop("checked", true) : $("#chkSexF").prop("checked", true);
                     $("input[name=curp]").val(data[8]);
                     $("input[name=street]").val(data[13]);
                     $("input[name=num_street]").val(data[15]);
@@ -427,9 +429,9 @@
                     $("input[name=postal_code]").val(data[16]);
                     $("input[name=phone_number]").val(data[5]);
                     $("input[name=email]").val(data[4]);
-                    $("select[name=state]").find("option[value='"+data[17]+"']").attr("selected", true);
-                    
-                    if(data[19]!=""){
+                    $("select[name=state]").find("option[value='" + data[17] + "']").attr("selected", true);
+
+                    if (data[19] != "") {
                         //School name
                         $("#chkFromCECyT").attr("checked", false);
                         $("#ddlCECyTs").addClass("hide");
@@ -440,32 +442,32 @@
                         $("#chkFromCECyT").attr("checked", true);
                         $("#ddlCECyTs").removeClass("hide")
                         $("#school_name").addClass("hide")
-                        $("select[name=school_proc]").find("option[value='"+data[10]+"']").attr("selected", true);
+                        $("select[name=school_proc]").find("option[value='" + data[10] + "']").attr("selected", true);
                     }
                     $("input[name=score]").val(data[11]);
-                    $("#inlineRadio"+data[12]).prop("checked", true);
+                    $("#inlineRadio" + data[12]).prop("checked", true);
                 },
-                error: function(data){
+                error: function (data) {
                     alert(data);
                 }
             });
         });
         var d = new Date();
-        var y = (d.getFullYear()-17).toString();
-        var m = (d.getMonth()+1).toString();
+        var y = (d.getFullYear() - 17).toString();
+        var m = (d.getMonth() + 1).toString();
         var day = d.getDate().toString();
-        var strDate = y + "-" + (m[1]?m:"0"+m) + "-" + (day[1]?day:"0"+day);
+        var strDate = y + "-" + (m[1] ? m : "0" + m) + "-" + (day[1] ? day : "0" + day);
         $("#studentForm").validate({
             rules: {
-                birth:{
+                birth: {
                     required: true,
                     max: strDate
                 },
                 school_proc: {
-                    valueNotEquals:"--Seleccionar--"
+                    valueNotEquals: "--Seleccionar--"
                 },
                 state: {
-                    valueNotEquals:"--Seleccionar--"
+                    valueNotEquals: "--Seleccionar--"
                 },
                 boleta: {
                     required: true,
@@ -547,15 +549,15 @@
                 }
             },
             messages: {
-                birth:{
-                    required:"Elige una fecha valida",
+                birth: {
+                    required: "Elige una fecha valida",
                     max: "Elige una fecha anterior"
                 },
                 school_proc: {
-                    valueNotEquals:"Elige una opción valida"
+                    valueNotEquals: "Elige una opción valida"
                 },
                 state: {
-                    valueNotEquals:"Elige una opción valida"
+                    valueNotEquals: "Elige una opción valida"
                 },
                 boleta: {
                     required: "Ingresa tu boleta por favor",

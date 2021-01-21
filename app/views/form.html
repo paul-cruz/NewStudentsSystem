@@ -378,6 +378,8 @@
                 $("#main-form").addClass("hide")
                 $.each($("#studentForm").serializeJSON(), function (key, value) {
                     user_data[key] = value;
+                    user_data["boleta"] = "<?=$_SESSION['idUsuario']?>" ;
+                    $("label[name=boleta]").text(user_data["boleta"]);
                     if (key == "state") {
                         $("label[name=state]").text(states[value - 1]);
                     } else if (key == "school_proc" && value != '') {
@@ -388,7 +390,6 @@
                     } else {
                         $("label[name='" + key + "']").text(value);
                     }
-                    user_data["boleta"] = '<?=$_SESSION["idUsuario"]?>';
                 });
                 console.log(user_data)
                 $("#verify-form").removeClass("hide")
