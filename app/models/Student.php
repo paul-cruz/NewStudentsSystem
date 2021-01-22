@@ -44,6 +44,10 @@ class Student {
 
     public function delete($data)
     {
+        $query = "SELECT grupo FROM Alumno WHERE boleta ='".$data["boleta"]."'";
+        $result = $this->db->executeQuery($query)->fetch_assoc()["grupo"];
+        $query = "UPDATE Grupo SET inscritos = inscritos - 1 WHERE idGrupo = ".$result;
+        $result = $this->db->executeQuery($query);
         $query = "DELETE FROM Alumno WHERE boleta ='".$data["boleta"]."'";
         $result = $this->db->executeQuery($query);
         $query = "DELETE FROM Usuario WHERE idUsuario = '".$data["boleta"]."'";
