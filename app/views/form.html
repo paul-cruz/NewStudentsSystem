@@ -424,7 +424,7 @@
                     max: strDate
                 },
                 school_proc: {
-                    valueNotEquals: "--Seleccionar--"
+                    valueNotEquals: $("#input[name=school]").val() == "" ? "--Seleccionar--" : ""
                 },
                 state: {
                     valueNotEquals: "--Seleccionar--"
@@ -496,7 +496,6 @@
                     maxlength: 60
                 },
                 school: {
-                    required: true,
                     pattern: /^([A-ZÁÉÍÓÚa-zñáéíóú0-9]+[\s]*)+$/,
                     minlength: 6,
                     maxlength: 30
