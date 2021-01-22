@@ -77,25 +77,25 @@
         rules: {
             claveTrabajo: {
                 required: true,
-                pattern: /[A-Za-z0-9]/,
+                pattern: /(ADMIN+([0-9]{5}))/,
                 minlength: 10,
                 maxlength: 10
             },
             nombre: {
                 required: true,
-                pattern: /[A-Za-z]/,
+                pattern: /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/,
                 minlength: 3,
                 maxlength: 18
             },
             ApPatA: {
                 required: true,
-                pattern: /[A-Za-z]/,
+                pattern: /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/,
                 minlength: 3,
                 maxlength: 15
             },
             ApMatA: {
                 required: true,
-                pattern: /[A-Za-z]/,
+                pattern: /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/,
                 minlength: 3,
                 maxlength: 15
             },
