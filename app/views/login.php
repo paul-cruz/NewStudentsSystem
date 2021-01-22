@@ -77,7 +77,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             rules: {
                 username: {
                     required: true,
-                    pattern: /((P)+([P,E])+([0-9]{8}))|(ADMIN+([0-9]{5}))/,
+                    pattern: /((P)+([P,E])+([0-9]{8}))|(ADMIN+([0-9]{5}))|([0-9]{10})/,
                     minlength: 10,
                     maxlength: 10
                 },

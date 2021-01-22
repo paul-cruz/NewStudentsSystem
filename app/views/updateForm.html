@@ -471,7 +471,7 @@
                 },
                 boleta: {
                     required: true,
-                    pattern: /(P)+([P,E])+([0–9]{8})/,
+                    pattern: /((P)+([P,E])+([0–9]{8}))|([0-9]{10})/,
                     minlength: 10,
                     maxlength: 10
                 },
@@ -483,7 +483,7 @@
                 },
                 phone_number: {
                     required: true,
-                    pattern: /[0-9]{8,10}/,
+                    pattern: /([0-9]{8})|([0-9]{10})/,
                     minlength: 8,
                     maxlength: 10
                 },
@@ -501,19 +501,19 @@
                 },
                 name: {
                     required: true,
-                    pattern: /[A-Za-z]/,
+                    pattern: /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/,
                     minlength: 3,
                     maxlength: 30
                 },
                 ApPat: {
                     required: true,
-                    pattern: /[A-Za-z]/,
+                    pattern: /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/,
                     minlength: 4,
                     maxlength: 15
                 },
                 ApMat: {
                     required: true,
-                    pattern: /[A-Za-z]/,
+                    pattern: /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/,
                     minlength: 4,
                     maxlength: 15
                 },
@@ -531,7 +531,7 @@
                 },
                 colonia: {
                     required: true,
-                    pattern: /[A-Za-z]/,
+                    pattern: /[A-Za-z0-9]/,
                     minlength: 6,
                     maxlength: 60
                 },
