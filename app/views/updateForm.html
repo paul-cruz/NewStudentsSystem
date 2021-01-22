@@ -519,31 +519,31 @@
                 },
                 street: {
                     required: true,
-                    pattern: /[A-Za-z0-9]/,
+                    pattern: /^([A-Za-z0-9]+[\s]*)+$/,
                     minlength: 4,
                     maxlength: 20
                 },
                 num_street: {
                     required: true,
-                    pattern: /[A-Za-z0-9]/,
+                    pattern: /^([A-Za-z0-9]+[\s]*)+$/,
                     minlength: 1,
                     maxlength: 4
                 },
                 colonia: {
                     required: true,
-                    pattern: /[A-Za-z0-9]/,
+                    pattern: /^([A-Za-z0-9]+[\s]*)+$/,
                     minlength: 6,
                     maxlength: 60
                 },
                 school: {
                     required: true,
-                    pattern: /[A-Za-z0-9]/,
+                    pattern: /^([A-Za-z0-9]+[\s]*)+$/,
                     minlength: 6,
                     maxlength: 30
                 },
                 score: {
                     required: true,
-                    pattern: /[0-9]{1,2}(\.[0-9]{1,2}){0,1}/,
+                    pattern: /^(([0-9]{1}(.[0-9]{1,2})?)|([1]{1}[0]{1}(.[0]{1,2})?))$/,
                     minlength: 1,
                     maxlength: 5
                 }
