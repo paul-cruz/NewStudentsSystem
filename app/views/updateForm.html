@@ -458,6 +458,7 @@
         var day = d.getDate().toString();
         var strDate = y + "-" + (m[1] ? m : "0" + m) + "-" + (day[1] ? day : "0" + day);
         $("#studentForm").validate({
+            ignore: "",
             rules: {
                 birth: {
                     required: true,
